@@ -9,7 +9,7 @@ const projects = [
   image: "/images/mpesa-wifi.jpg",
   repoLink: "https://github.com/Nigiddy/Mpesa_Based-WiFi-Billing-System"
 },
-// Add more projects here
+// Template for adding future projects 
 ];
 
 export default function Projects() {
