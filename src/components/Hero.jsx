@@ -126,7 +126,7 @@ export default function HeroSection() {
         {/* LinkedIn */}
         <div className="relative group">
           <a
-            href="https://linkedin.com/in/gideon-papa"
+            href="https://www.linkedin.com/in/gideon-papa-8b121124b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             rel="noopener noreferrer"
           >
