@@ -64,7 +64,7 @@ export default function HeroSection() {
               Hey, I'm <span className="text-blue-500">Gideon</span>
             </h1>
             <h2 className="text-xl sm:text-2xl font-medium mt-2">
-              Full-Stack Developer & Cloud Engineer
+              Full-Stack Developer 
             </h2>
           </motion.div>
 
