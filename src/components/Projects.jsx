@@ -19,6 +19,14 @@ const projects = [
     repoLink: "https://zoezi-fit.vercel.app/",
     isDeployed: true
   },
+  {
+    title: "danguroHaus - A Real Estate Compny Website",
+    description: "A modern and resposive Website with filter features.",
+    techStack: [FaJs, FaReact, FaCss3Alt],
+    image: "/images/danguro.jpg",
+    repoLink: "https://danguro-haus.vercel.app/",
+    isDeployed: true
+  },
   // Template for adding future projects 
 ];
 
@@ -54,7 +62,7 @@ export default function Projects() {
               <div className="mt-4 flex items-center gap-2 text-blue-500 dark:text-blue-400 font-medium">
                 {project.isDeployed ? (
                   <>
-                    <FaGlobe /> <span>View Live Site</span>
+                    <FaGlobe /> <span>View Demo Site</span>
                   </>
                 ) : (
                   <>
