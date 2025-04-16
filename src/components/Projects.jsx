@@ -20,7 +20,7 @@ const projects = [
     isDeployed: true
   },
   {
-    title: "danguroHaus - A Real Estate Compny Website",
+    title: "danguroHaus - A Real Estate Company Website",
     description: "A modern and resposive Website with filter features.",
     techStack: [FaJs, FaReact, FaCss3Alt],
     image: "/images/danguro.jpg",
