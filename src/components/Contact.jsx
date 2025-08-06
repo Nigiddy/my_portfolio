@@ -71,18 +71,7 @@ export default function ContactSection() {
             Get in Touch
           </h2>
 
-          {submitted && (
-            <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-center">
-              Message sent successfully!
-            </div>
-          )}
-          {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-center">
-              Failed to send message. Please try again.
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
             <input 
               type="text" 
               name="name" 
@@ -91,6 +80,7 @@ export default function ContactSection() {
               onChange={handleChange} 
               className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required 
+              aria-label="Your Name"
             />
             <input 
               type="email" 
@@ -100,6 +90,7 @@ export default function ContactSection() {
               onChange={handleChange} 
               className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required 
+              aria-label="Your Email"
             />
             <textarea 
               name="message" 
@@ -109,6 +100,7 @@ export default function ContactSection() {
               rows="4" 
               className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              aria-label="Your Message"
             ></textarea>
             <button 
               type="submit" 
@@ -116,10 +108,21 @@ export default function ContactSection() {
                 isSubmitting ? "bg-blue-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
               }`}
               disabled={isSubmitting}
+              aria-label="Send Message"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
+          {submitted && (
+            <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-center" role="status" aria-live="polite">
+              Message sent successfully!
+            </div>
+          )}
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-center" role="alert" aria-live="assertive">
+              Failed to send message. Please try again.
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
