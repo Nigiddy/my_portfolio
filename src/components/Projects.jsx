@@ -53,7 +53,6 @@ export default function Projects() {
                   alt={project.title}
                   width={640}
                   height={160}
-                  fill
                   className="object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
