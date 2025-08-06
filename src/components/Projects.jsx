@@ -7,7 +7,7 @@ const projects = [
     title: "Mpesa-Based WiFi Billing System",
     description: "A billing system that integrates Mpesa for seamless WiFi payments.",
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
-    image: "/images/mpesa-wifi.jpg",
+    image: "/images/mpesa-wifi-optimized.jpg", // Use optimized image
     repoLink: "https://github.com/Nigiddy/Mpesa_Based-WiFi-Billing-System",
     isDeployed: false
   },
@@ -15,7 +15,7 @@ const projects = [
     title: "Zoezi Fit - Modern Gym Website",
     description: "A sleek and responsive website for a modern fitness center, featuring class schedules and membership information.",
     techStack: [FaJs, FaReact, FaCss3Alt],
-    image: "/images/zoeziFit.jpg",
+    image: "/images/zoeziFit-optimized.jpg", // Use optimized image
     repoLink: "https://zoezi-fit.vercel.app/",
     isDeployed: true
   },
@@ -23,7 +23,7 @@ const projects = [
     title: "danguroHaus - A Real Estate Company Website",
     description: "A modern and resposive Website with filter features.",
     techStack: [FaJs, FaReact, FaCss3Alt],
-    image: "/images/danguro.jpg",
+    image: "/images/danguro-optimized.jpg", // Use optimized image
     repoLink: "https://danguro-haus.vercel.app/",
     isDeployed: true
   },
@@ -49,6 +49,7 @@ export default function Projects() {
                   src={project.image}
                   alt={project.title}
                   fill
+                  loading="lazy" // Explicitly set lazy loading
                   className="object-cover group-hover:scale-105 transition-transform"
                 />
               </div>

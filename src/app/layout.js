@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white text-black dark:bg-black dark:text-white transition-colors duration-300`}
       >
-        {children}
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
