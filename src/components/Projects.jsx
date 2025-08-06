@@ -51,6 +51,8 @@ export default function Projects() {
                 <Image
                   src={project.image}
                   alt={project.title}
+                  width={640}
+                  height={160}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform"
                 />
