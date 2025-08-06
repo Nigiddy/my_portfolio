@@ -51,12 +51,14 @@ export default function ServicesPage() {
         {services.map((service, index) => (
           <motion.div
             key={index}
-            className="flex flex-col items-center p-6 bg-gray-100 dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+            className="flex flex-col items-center p-6 bg-gray-100 dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             whileHover={{ scale: 1.05, y: -5 }}
+            tabIndex={0}
+            aria-label={`Service: ${service.title}. ${service.description}`}
           >
             <service.Icon className={`text-5xl ${service.color}`} />
             <h3 className="text-xl font-semibold mt-4 text-center">{service.title}</h3>

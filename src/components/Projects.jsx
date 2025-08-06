@@ -3,6 +3,7 @@ import { FaGlobe } from "react-icons/fa6";
 import Image from "next/image";
 
 const projects = [
+  
   {
     title: "Mpesa-Based WiFi Billing System",
     description: "A billing system that integrates Mpesa for seamless WiFi payments.",
@@ -42,13 +43,16 @@ export default function Projects() {
               href={project.repoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow"
+              aria-label={`Project: ${project.title}. ${project.isDeployed ? 'View Demo Site' : 'View on GitHub'}`}
+              className="group block bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow focus:outline-none focus:ring-2 focus:ring-blue-500"
+              tabIndex={0}
             >
               <div className="w-full h-40 relative overflow-hidden rounded-md">
                 <Image
                   src={project.image}
                   alt={project.title}
-                  fill
+                  width={640}
+                  height={160}
                   className="object-cover group-hover:scale-105 transition-transform"
                 />
               </div>

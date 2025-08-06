@@ -117,6 +117,8 @@ export default function HeroSection() {
             href="https://github.com/Nigiddy"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub profile"
+            tabIndex={0}
           >
             <FaGithub className="text-xl hover:text-blue-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 cursor-pointer" />
           </a>
@@ -126,9 +128,11 @@ export default function HeroSection() {
         {/* LinkedIn */}
         <div className="relative group">
           <a
-            href="https://www.linkedin.com/in/gideon-papa-8b121124b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            href="https://www.linkedin.com/in/gideonpapa"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+            tabIndex={0}
           >
             <FaLinkedin className="text-xl hover:text-blue-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 cursor-pointer" />
           </a>
@@ -150,9 +154,11 @@ export default function HeroSection() {
         {/* WhatsApp */}
         <div className="relative group">
           <a
-            href="https://wa.me/254756521055"
+            href="https://wa.me/254799393939"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="WhatsApp contact"
+            tabIndex={0}
           >
             <FaWhatsapp className="text-xl hover:text-blue-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 cursor-pointer" />
           </a>
@@ -165,6 +171,8 @@ export default function HeroSection() {
             href="https://www.instagram.com/ni.giddy"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Instagram profile"
+            tabIndex={0}
           >
             <FaInstagram className="text-xl hover:text-blue-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 cursor-pointer" />
           </a>
@@ -177,11 +185,19 @@ export default function HeroSection() {
             <FaSun
               className="text-xl hover:text-yellow-400 hover:rotate-180 hover:scale-125 transition-all duration-300 cursor-pointer"
               onClick={() => setTheme("light")}
+              role="button"
+              aria-label="Switch to light mode"
+              tabIndex={0}
+              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setTheme('light'); }}
             />
           ) : (
             <FaMoon
               className="text-xl hover:text-gray-800 hover:rotate-180 hover:scale-125 transition-all duration-300 cursor-pointer"
               onClick={() => setTheme("dark")}
+              role="button"
+              aria-label="Switch to dark mode"
+              tabIndex={0}
+              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setTheme('dark'); }}
             />
           )}
           <span className="tooltip">Toggle Mode</span>

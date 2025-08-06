@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    devIndicators: {
-      buildActivity: false,
-    },
-  };
-  
-  export default nextConfig;
+  // devIndicators removed as deprecated
+};
+
+export default nextConfig;
   
