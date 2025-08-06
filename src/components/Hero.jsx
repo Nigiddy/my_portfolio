@@ -178,30 +178,6 @@ export default function HeroSection() {
           </a>
           <span className="tooltip">Instagram</span>
         </div>
-
-        {/* Dark Mode Toggle */}
-        <div className="relative group">
-          {theme === "dark" ? (
-            <FaSun
-              className="text-xl hover:text-yellow-400 hover:rotate-180 hover:scale-125 transition-all duration-300 cursor-pointer"
-              onClick={() => setTheme("light")}
-              role="button"
-              aria-label="Switch to light mode"
-              tabIndex={0}
-              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setTheme('light'); }}
-            />
-          ) : (
-            <FaMoon
-              className="text-xl hover:text-gray-800 hover:rotate-180 hover:scale-125 transition-all duration-300 cursor-pointer"
-              onClick={() => setTheme("dark")}
-              role="button"
-              aria-label="Switch to dark mode"
-              tabIndex={0}
-              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setTheme('dark'); }}
-            />
-          )}
-          <span className="tooltip">Toggle Mode</span>
-        </div>
       </div>
 
       {/* Tooltip Styling */}
