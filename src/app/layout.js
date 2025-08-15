@@ -1,6 +1,9 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
+import { themeColors } from "../themeColors";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +27,25 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // Dynamic theme color logic
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+  const color = themeColors[pathname] || themeColors["/"];
+
+  // Update theme color instantly on route change
+  if (typeof window !== "undefined") {
+    useEffect(() => {
+      const metaTag = document.querySelector('meta[name="theme-color"]');
+      if (metaTag) {
+        metaTag.setAttribute("content", color);
+      } else {
+        const newMeta = document.createElement("meta");
+        newMeta.setAttribute("name", "theme-color");
+        newMeta.setAttribute("content", color);
+        document.head.appendChild(newMeta);
+      }
+    }, [pathname, color]);
+  }
+
   return (
     <html lang="en">
       <head>
@@ -45,7 +67,7 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="theme-color" content={color} />
         <title>Gideon Papa</title>
       </head>
       <body
