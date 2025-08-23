@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
+// ...existing code...
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+// ...existing code...
+
   return (
     <html lang="en">
       <head>
@@ -45,14 +48,16 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#ffffff" />
         <title>Gideon Papa</title>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white text-black dark:bg-black dark:text-white transition-colors duration-300`}
       >
-        {children}
-        <Analytics />
+  {children}
+  {/* Client component to update theme color dynamically */}
+  {typeof window !== "undefined" && require("../components/ThemeColorUpdater.jsx").default()}
+  <Analytics />
       </body>
     </html>
   );

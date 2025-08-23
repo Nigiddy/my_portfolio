@@ -142,7 +142,7 @@ export default function HeroSection() {
         {/* Twitter */}
         <div className="relative group">
           <a
-            href="https://x.com/ni_giddy?t=6l78-sWuQwh3Hi2hpi6hvA&s=09"
+            href="https://x.com/niGiddy"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -154,7 +154,7 @@ export default function HeroSection() {
         {/* WhatsApp */}
         <div className="relative group">
           <a
-            href="https://wa.me/254799393939"
+            href="https://wa.me/254756521055"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp contact"
@@ -205,3 +205,6 @@ export default function HeroSection() {
     </>
   );
 }
+
+
+

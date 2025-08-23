@@ -9,8 +9,8 @@ const projects = [
     description: "A billing system that integrates Mpesa for seamless WiFi payments.",
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
     image: "/images/mpesa-wifi.jpg",
-    repoLink: "https://github.com/Nigiddy/Mpesa_Based-WiFi-Billing-System",
-    isDeployed: false
+    repoLink: "https://v0-wi-fi-billing-system-seven.vercel.app/",
+    isDeployed: true
   },
   {
     title: "Zoezi Fit - Modern Gym Website",
@@ -80,4 +80,5 @@ export default function Projects() {
       </div>
     </section>
   );
+
 }
