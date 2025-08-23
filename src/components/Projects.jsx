@@ -1,5 +1,6 @@
 import { FaGithub, FaJs, FaNodeJs, FaReact, FaPython, FaAws, FaCss3Alt, FaDatabase } from "react-icons/fa";
 import { FaGlobe } from "react-icons/fa6";
+import { SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql } from "react-icons/si"; 
 import Image from "next/image";
 
 const projects = [
@@ -9,25 +10,18 @@ const projects = [
     description: "A billing system that integrates Mpesa for seamless WiFi payments.",
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
     image: "/images/mpesa-wifi.jpg",
-    repoLink: "https://v0-wi-fi-billing-system-seven.vercel.app/",
-    isDeployed: true
+    repoLink: "https://github.com/Nigiddy/Mpesa_Based-WiFi-Billing-System",
+    isDeployed: false
   },
   {
-    title: "Zoezi Fit - Modern Gym Website",
-    description: "A sleek and responsive website for a modern fitness center, featuring class schedules and membership information.",
-    techStack: [FaJs, FaReact, FaCss3Alt],
-    image: "/images/zoeziFit.jpg",
-    repoLink: "https://zoezi-fit.vercel.app/",
+    title: "Mlami BBQ - Modern Restaurant Website",
+    description: "A modern BBQ restaurant management system with M-Pesa STK Push payment integration.",
+    techStack: [FaReact, SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql],
+    image: "/images/mlami.jpg",
+    repoLink: "https://mlamibbq.vercel.app/",
     isDeployed: true
   },
-  {
-    title: "danguroHaus - A Real Estate Company Website",
-    description: "A modern and resposive Website with filter features.",
-    techStack: [FaJs, FaReact, FaCss3Alt],
-    image: "/images/danguro.jpg",
-    repoLink: "https://danguro-haus.vercel.app/",
-    isDeployed: true
-  },
+
   // Template for adding future projects 
 ];
 

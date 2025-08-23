@@ -51,24 +51,22 @@ export default function HeroSection() {
       >
         <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
-          <motion.div
-            className="text-left"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h4 className="text-lg uppercase tracking-widest text-gray-500 dark:text-gray-400">
-              Welcome to My Portfolio
-            </h4>
-            <h1 className="text-4xl sm:text-6xl font-bold mt-3">
-              Hey, I'm <span className="text-blue-500">Gideon</span>
-            </h1>
-            <h2 className="text-xl sm:text-2xl font-medium mt-2">
-              Full-Stack Developer & UI/UX Designer
-            </h2>
-          </motion.div>
-
-          {/* Animation */}
+                <motion.div
+                className="text-left"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                >
+                <h4 className="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  Welcome to My Portfolio
+                </h4>
+                <h1 className="text-2xl sm:text-4xl font-bold mt-3">
+                  Hey, I'm <span className="text-blue-500">Gideon Papa</span>
+                </h1>
+                <h2 className="text-base sm:text-lg font-medium mt-2">
+                  Full-Stack Developer & UI/UX Designer
+                </h2>
+                </motion.div>
           <motion.div
             className="flex justify-center"
             initial={{ opacity: 0, x: 50 }}
