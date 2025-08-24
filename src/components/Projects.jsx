@@ -42,7 +42,7 @@ export default function Projects() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % projects.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [projects.length]);
 
