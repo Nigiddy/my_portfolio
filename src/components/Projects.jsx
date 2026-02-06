@@ -17,6 +17,14 @@ const projects = [
     isDeployed: false
   },
   {
+    title: "A Modern Restaurant website",
+    description: "A modern  Hotel Managaement System",
+    techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
+    image: "/images/mlamidemo.png",
+    repoLink: "https://mlami-demo.vercel.app/",
+    isDeployed: true
+  },
+  {
     title: "Mlami BBQ - Modern Restaurant Website",
     description: "A modern BBQ restaurant management system with M-Pesa STK Push payment integration.",
     techStack: [FaReact, SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql],
