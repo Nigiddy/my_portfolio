@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title: "Mlami BBQ - Modern Restaurant Website",
-    description: "An ordering platform designed to digitize menu access, ordering, and payment processing for food businesses. The system enables customers to scan a QR code to access the digital menu, browse available meals, place orders, and complete payments through M-Pesa STK Push integration and a digital receipt issued.,
+    description: "An ordering platform designed to digitize menu access, ordering, and payment processing for food businesses. The system enables customers to scan a QR code to access the digital menu, browse available meals, place orders, and complete payments through M-Pesa STK Push integration and a digital receipt issued.",
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
     image: "/images/mlamidemo.png",
     repoLink: "https://mlami-demo.vercel.app/",
