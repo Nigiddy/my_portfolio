@@ -13,20 +13,20 @@ const projects = [
     description: "A billing system that integrates Mpesa for seamless WiFi payments.",
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
     image: "/images/mpesa-wifi.jpg",
-    repoLink: "https://github.com/Nigiddy/Mpesa_Based-WiFi-Billing-System",
-    isDeployed: false
+    repoLink: "https://qonnectkibaruani.vercel.app/",
+    isDeployed: true
   },
   {
-    title: "A Modern Restaurant website",
-    description: "A modern  Hotel Managaement System",
+    title: "Mlami BBQ - Modern Restaurant Website",
+    description: "An ordering platform designed to digitize menu access, ordering, and payment processing for food businesses. The system enables customers to scan a QR code to access the digital menu, browse available meals, place orders, and complete payments through M-Pesa STK Push integration and a digital receipt issued.,
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
     image: "/images/mlamidemo.png",
     repoLink: "https://mlami-demo.vercel.app/",
     isDeployed: true
   },
   {
-    title: "Mlami BBQ - Modern Restaurant Website",
-    description: "A modern BBQ restaurant management system with M-Pesa STK Push payment integration.",
+    title: "The SaaS model of Mlami BBQ",
+    description: "The SaaS model allows the system to be replicated and deployed for multiple restaurants, enabling businesses to digitize their ordering and payment workflows efficiently.",
     techStack: [FaReact, SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql],
     image: "/images/mlami.jpg",
     repoLink: "https://mlamibbq.vercel.app/",
