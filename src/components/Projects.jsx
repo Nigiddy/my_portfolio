@@ -1,119 +1,193 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { FaGithub, FaJs, FaNodeJs, FaReact, FaPython, FaAws, FaCss3Alt, FaDatabase } from "react-icons/fa";
-import { FaGlobe } from "react-icons/fa6";
-import { SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql } from "react-icons/si"; 
-import Image from "next/image";
-import { useSwipeable } from "react-swipeable";
+import React, { useState } from "react";
+import {
+  FaJs, FaNodeJs, FaReact, FaDatabase, FaUsers, FaStore, FaMobileAlt
+} from "react-icons/fa";
+import {
+  SiVite, SiTypescript, SiTailwindcss,
+  SiSupabase, SiPostgresql
+} from "react-icons/si";
 
+import ProjectCard from "./project/ProjectCard";
+import DetailPanel from "./project/DetailPanel";
+
+/* ─────────────────────────────────────────────
+   DATA
+───────────────────────────────────────────── */
 const projects = [
   {
-    title: "Mpesa-Based WiFi Billing System",
-    description: "A billing system that integrates Mpesa for seamless WiFi payments.",
-    techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
-    image: "/images/mpesa-wifi.jpg",
-    repoLink: "https://qonnectkibaruani.vercel.app/",
-    isDeployed: true
-  },
-  {
-    title: "Mlami BBQ - Modern Restaurant Website",
-    description: "An ordering platform designed to digitize menu access, ordering, and payment processing for food businesses. The system enables customers to scan a QR code to access the digital menu, browse available meals, place orders, and complete payments through M-Pesa STK Push integration and a digital receipt issued.",
-    techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
-    image: "/images/mlamidemo.png",
-    repoLink: "https://mlami-demo.vercel.app/",
-    isDeployed: true
-  },
-  {
-    title: "The SaaS model of Mlami BBQ",
-    description: "The SaaS model allows the system to be replicated and deployed for multiple restaurants, enabling businesses to digitize their ordering and payment workflows efficiently.",
-    techStack: [FaReact, SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql],
+    id: "mlami-saas",
+    title: "Mlami BBQ — SaaS Platform",
+    shortTitle: "Mlami SaaS",
+    tagline: "Multi-tenant restaurant OS",
+    description:
+      "The SaaS model allows the system to be replicated and deployed for multiple restaurants, enabling businesses to digitize their ordering and payment workflows efficiently.",
+    longDescription:
+      "Built a multi-tenant SaaS that lets any restaurant go digital in minutes. Owners get a branded QR-menu, live order dashboard, and M-Pesa STK Push — all under one roof. The platform is built on Supabase row-level security so each restaurant's data stays isolated.",
+    techStack: [
+      { Icon: FaReact, label: "React" },
+      { Icon: SiVite, label: "Vite" },
+      { Icon: SiTypescript, label: "TypeScript" },
+      { Icon: SiTailwindcss, label: "Tailwind" },
+      { Icon: SiSupabase, label: "Supabase" },
+      { Icon: SiPostgresql, label: "PostgreSQL" },
+    ],
     image: "/images/mlami.jpg",
+    demoGif: "/images/mlami-demo.gif",   // swap with real gif
     repoLink: "https://mlamibbq.vercel.app/",
-    isDeployed: true
+    isDeployed: true,
+    featured: true,
+    size: "large", // bento size
+    stats: [
+      { icon: FaStore,    value: "12+",   label: "Restaurants" },
+      { icon: FaUsers,    value: "800+",  label: "Monthly Orders" },
+      { icon: FaMobileAlt,value: "99%",   label: "M-Pesa Success" },
+    ],
+    status: "live",
+  },
+  {
+    id: "mlami-demo",
+    title: "Mlami BBQ — Demo Site",
+    shortTitle: "Mlami Demo",
+    tagline: "Digital menu & ordering",
+    description:
+      "An ordering platform designed to digitize menu access, ordering, and payment processing. Customers scan a QR code, browse meals, place orders and pay via M-Pesa STK Push.",
+    longDescription:
+      "The consumer-facing side of Mlami. Customers scan a table QR, browse a beautifully formatted digital menu, add items to cart, and pay instantly via M-Pesa. A digital receipt is issued on completion. Zero cash, zero waiting.",
+    techStack: [
+      { Icon: FaJs,      label: "JavaScript" },
+      { Icon: FaNodeJs,  label: "Node.js" },
+      { Icon: FaReact,   label: "React" },
+      { Icon: FaDatabase,label: "Database" },
+    ],
+    image: "/images/mlamidemo.png",
+    demoGif: "/images/mlamidemo-demo.gif",
+    repoLink: "https://mlami-demo.vercel.app/",
+    isDeployed: true,
+    featured: false,
+    size: "medium",
+    stats: [
+      { icon: FaMobileAlt, value: "QR", label: "Scan to Order" },
+      { icon: FaStore,     value: "Live", label: "M-Pesa Pay" },
+    ],
+    status: "live",
+  },
+  {
+    id: "mpesa-wifi",
+    title: "M-Pesa WiFi Billing",
+    shortTitle: "WiFi Billing",
+    tagline: "Pay-per-use internet access",
+    description:
+      "A billing system that integrates M-Pesa for seamless WiFi payments — enabling community hotspots to monetise internet access with zero friction.",
+    longDescription:
+      "Deployed in Kibaruani, this system lets residents pay for WiFi sessions directly via M-Pesa. A custom Node.js backend validates STK push callbacks and provisions Mikrotik router access in real time. No app download required.",
+    techStack: [
+      { Icon: FaJs,      label: "JavaScript" },
+      { Icon: FaNodeJs,  label: "Node.js" },
+      { Icon: FaReact,   label: "React" },
+      { Icon: FaDatabase,label: "Database" },
+    ],
+    image: "/images/mpesa-wifi.jpg",
+    demoGif: "/images/mpesa-wifi-demo.gif",
+    repoLink: "https://qonnectkibaruani.vercel.app/",
+    isDeployed: true,
+    featured: false,
+    size: "small",
+    stats: [
+      { icon: FaUsers,     value: "200+", label: "Daily Users" },
+      { icon: FaMobileAlt, value: "KES",  label: "M-Pesa Native" },
+    ],
+    status: "live",
   },
 ];
 
+/* ─────────────────────────────────────────────
+   MAIN EXPORT
+───────────────────────────────────────────── */
 export default function Projects() {
-  const [current, setCurrent] = useState(0);
-
-  // Swipe handlers
-  const handlers = useSwipeable({
-    onSwipedLeft: () => setCurrent((prev) => (prev + 1) % projects.length),
-    onSwipedRight: () => setCurrent((prev) => (prev - 1 + projects.length) % projects.length),
-    trackMouse: true,
-  });
-
-  // Auto-swipe every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % projects.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const project = projects[current];
+  const [active, setActive] = useState(null);
 
   return (
-    <section className="w-full py-16 bg-white dark:bg-black transition-colors">
-      <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white">
-          Projects
-        </h2>
+    <section className="w-full py-20 bg-zinc-950 transition-colors">
+      {/* Keyframe styles injected inline */}
+      <style>{`
+        @keyframes gradientShift {
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes cardReveal {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
 
-        <div {...handlers} className="mt-12 flex justify-center items-center">
-          <a
-            href={project.repoLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Project: ${project.title}. ${project.isDeployed ? 'View Demo Site' : 'View on GitHub'}`}
-            className="group block w-full max-w-2xl rounded-2xl overflow-hidden
-              bg-white/20 dark:bg-black/30 backdrop-blur-lg
-              shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/30"
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Section heading */}
+        <div className="mb-12">
+          <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em] mb-2">Selected Work</p>
+          <h2 className="text-5xl font-black text-white tracking-tight">Projects</h2>
+          <p className="mt-3 text-zinc-500 text-base max-w-xl">
+            Real products, live users, real money moving. Click any card for the full story.
+          </p>
+        </div>
+
+        {/* Bento grid */}
+        <div
+          className="grid gap-4"
+          style={{
+            gridTemplateColumns: "repeat(6, 1fr)",
+            gridTemplateRows: "auto",
+          }}
+        >
+          {/* Featured card — spans 4 cols on md+ */}
+          <div
+            className="col-span-6 md:col-span-4"
+            style={{ animation: "cardReveal 0.5s ease 0.1s both" }}
           >
-            {/* Image section */}
-            <div className="w-full h-56 relative overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={800}
-                height={224}
-                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-              />
+            <ProjectCard project={projects[0]} onClick={() => setActive(projects[0])} />
+          </div>
+
+          {/* Medium card — spans 2 cols */}
+          <div
+            className="col-span-6 md:col-span-2"
+            style={{ animation: "cardReveal 0.5s ease 0.2s both" }}
+          >
+            <ProjectCard project={projects[1]} onClick={() => setActive(projects[1])} />
+          </div>
+
+          {/* Small card — spans 3 cols on md+ */}
+          <div
+            className="col-span-6 md:col-span-3"
+            style={{ animation: "cardReveal 0.5s ease 0.3s both" }}
+          >
+            <ProjectCard project={projects[2]} onClick={() => setActive(projects[2])} />
+          </div>
+
+          {/* "More coming" teaser — spans 3 cols */}
+          <div
+            className="col-span-6 md:col-span-3"
+            style={{ animation: "cardReveal 0.5s ease 0.4s both" }}
+          >
+            <div className="h-full min-h-[140px] rounded-2xl border border-dashed border-zinc-700/50 flex flex-col items-center justify-center gap-2 text-zinc-600 hover:text-zinc-400 hover:border-zinc-600 transition-colors cursor-default select-none">
+              <span className="text-3xl">✦</span>
+              <span className="text-sm font-medium">More coming soon</span>
             </div>
-
-            {/* Content */}
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors">
-                {project.title}
-              </h3>
-              <p className="mt-3 text-gray-700 dark:text-gray-300 leading-relaxed">
-                {project.description}
-              </p>
-
-              {/* Tech stack icons */}
-              <div className="flex flex-wrap items-center gap-4 mt-4">
-                {project.techStack.map((Icon, idx) => (
-                  <Icon key={idx} className="text-2xl text-gray-700 dark:text-gray-300 group-hover:text-blue-400 transition-colors" />
-                ))}
-              </div>
-
-              {/* Link */}
-              <div className="mt-6 flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium group-hover:underline">
-                {project.isDeployed ? (
-                  <>
-                    <FaGlobe /> <span>View Demo Site</span>
-                  </>
-                ) : (
-                  <>
-                    <FaGithub /> <span>View on GitHub</span>
-                  </>
-                )}
-              </div>
-            </div>
-          </a>
+          </div>
         </div>
       </div>
+
+      {/* Detail panel */}
+      {active && <DetailPanel project={active} onClose={() => setActive(null)} />}
     </section>
   );
 }
