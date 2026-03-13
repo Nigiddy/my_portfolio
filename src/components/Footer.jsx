@@ -26,7 +26,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="text-xs font-mono text-zinc-700 tabular-nums">
-          © {year} · Built with Next.js & ☕
+          © {year} · Bringing ideas to reality ☕
         </p>
 
       </div>
