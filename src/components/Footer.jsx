@@ -1,11 +1,35 @@
 "use client";
-const Footer = () => {
-    return (
-      <footer className="w-full py-4 bg-gray-100 dark:bg-gray-900 text-center text-gray-600 dark:text-gray-400 transition-colors">
-      <p>&copy; {new Date().getFullYear()} Gideon Papa. All rights reserved.</p>
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="relative w-full bg-zinc-950 border-t border-zinc-800/60 overflow-hidden">
+
+      {/* Subtle centre glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{
+          background: "linear-gradient(90deg, transparent, #f97316 50%, transparent)",
+          opacity: 0.6,
+        }}
+      />
+
+      <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+
+        {/* Name / brand */}
+        <p className="text-sm font-mono text-zinc-600">
+          <span className="text-white font-bold">Gideon Papa</span>
+          {" "}— Full-Stack Developer & UI/UX Designer
+        </p>
+
+        {/* Copyright */}
+        <p className="text-xs font-mono text-zinc-700 tabular-nums">
+          © {year} · Built with Next.js & ☕
+        </p>
+
+      </div>
     </footer>
-    );
-  };
-  
-  export default Footer;
-  
+  );
+}
