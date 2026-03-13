@@ -10,7 +10,6 @@ import {
   SiSupabase, SiPostgresql
 } from "react-icons/si";
 import GlowBorder from "./GlowBorder";
-import { STATUS_COLORS } from "../../themeColors";
 
 /** Individual bento card */
 export default function ProjectCard({
@@ -64,7 +63,11 @@ export default function ProjectCard({
 
         {/* Status badge */}
         <span
-          className={`absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full border ${STATUS_COLORS[project.status]}`}
+          className={`absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full border ${
+            project.status === "live"
+              ? "border-green-400/30 text-green-400"
+              : "border-orange-400/30 text-orange-400"
+          }`}
         >
           {project.status === "live" ? "● Live" : project.status}
         </span>

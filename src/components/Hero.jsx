@@ -1,6 +1,4 @@
 "use client";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaLinkedin, FaGithub, FaWhatsapp, FaInstagram,
@@ -10,6 +8,7 @@ import { SiX, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { FaHouse } from "react-icons/fa6";
 import dynamic from "next/dynamic";
 import DockIcon from "./hero/DockIcon";
+import ThemeSwitcher from "./theme/ThemeSwitcher";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import laptopAnimation from "../animations/laptop.json";
@@ -41,11 +40,6 @@ const navLinks = [
    MAIN EXPORT
 ───────────────────────────────────────────── */
 export default function HeroSection() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
-  if (!mounted) return null;
 
   return (
     <>
@@ -90,28 +84,24 @@ export default function HeroSection() {
       {/* ─── HERO ─── */}
       <section
         id="home"
-        className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-zinc-950 overflow-hidden"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white dark:bg-zinc-950 overflow-hidden"
       >
         {/* Background ambient glows */}
         <div
           aria-hidden
-          className="pointer-events-none absolute top-0 left-0 w-[600px] h-[600px] opacity-10 -translate-x-1/3 -translate-y-1/3"
+          className="pointer-events-none absolute top-0 left-0 w-[600px] h-[600px] opacity-20 dark:opacity-10 -translate-x-1/3 -translate-y-1/3"
           style={{ background: "radial-gradient(circle, #f97316 0%, transparent 65%)" }}
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] opacity-8 translate-x-1/4 translate-y-1/4"
+          className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] opacity-10 dark:opacity-8 translate-x-1/4 translate-y-1/4"
           style={{ background: "radial-gradient(circle, #8b5cf6 0%, transparent 65%)" }}
         />
 
         {/* Subtle grid overlay */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
+          className="pointer-events-none absolute inset-0 bg-black/5 dark:bg-white/5"
         />
 
         <div className="relative z-10 max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -129,25 +119,25 @@ export default function HeroSection() {
               style={{ animation: "fadeSlideUp 0.5s ease 0.1s both" }}
             >
               <span className="h-px w-8 bg-orange-500" />
-              <span className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em]">
+              <span className="text-xs font-mono text-orange-500 dark:text-orange-400 uppercase tracking-[0.2em]">
                 Full-Stack Developer & UI/UX Designer
               </span>
             </div>
 
             {/* Name */}
             <div style={{ animation: "fadeSlideUp 0.5s ease 0.2s both" }}>
-              <p className="text-zinc-500 text-sm font-mono mb-1">Hey there 👋 I'm</p>
+              <p className="text-zinc-600 dark:text-zinc-500 text-sm font-mono mb-1">Hey there 👋 I'm</p>
               <h1 className="text-5xl sm:text-6xl font-black tracking-tight leading-none">
                 <span className="name-gradient">Gideon</span>
                 <br />
-                <span className="text-white">Papa</span>
+                <span className="text-black dark:text-white">Papa</span>
                 <span className="cursor" aria-hidden />
               </h1>
             </div>
 
             {/* Bio */}
             <p
-              className="text-zinc-400 text-base leading-relaxed max-w-md"
+              className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed max-w-md"
               style={{ animation: "fadeSlideUp 0.5s ease 0.3s both" }}
             >
               I build fast, beautiful, and revenue-generating web products —
@@ -164,8 +154,8 @@ export default function HeroSection() {
                 href="#projects"
                 className="
                   px-5 py-2.5 rounded-xl text-sm font-semibold text-white
-                  bg-orange-500 hover:bg-orange-400
-                  shadow-lg shadow-orange-500/20 hover:shadow-orange-400/30
+                  bg-orange-500 hover:bg-orange-600
+                  shadow-lg shadow-orange-500/20 hover:shadow-orange-600/30
                   transition-all duration-200 hover:scale-[1.02]
                 "
               >
@@ -175,9 +165,12 @@ export default function HeroSection() {
                 href="#contact"
                 className="
                   px-5 py-2.5 rounded-xl text-sm font-semibold
-                  text-zinc-300 hover:text-white
-                  border border-zinc-700 hover:border-zinc-500
-                  bg-zinc-900 hover:bg-zinc-800
+                  text-zinc-700 hover:text-black
+                  dark:text-zinc-300 dark:hover:text-white
+                  border border-zinc-300 hover:border-zinc-500
+                  dark:border-zinc-700 dark:hover:border-zinc-500
+                  bg-white/50 hover:bg-white
+                  dark:bg-zinc-900 dark:hover:bg-zinc-800
                   transition-all duration-200
                 "
               >
@@ -196,7 +189,7 @@ export default function HeroSection() {
             {/* Glowing ring behind Lottie */}
             <div
               aria-hidden
-              className="absolute w-64 h-64 rounded-full opacity-20 blur-2xl"
+              className="absolute w-64 h-64 rounded-full opacity-30 dark:opacity-20 blur-2xl"
               style={{ background: "radial-gradient(circle, #f97316, #ec4899)" }}
             />
             <Lottie
@@ -216,11 +209,11 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <div className="flex items-center gap-4 mb-6">
-            <span className="h-px flex-1 bg-zinc-800" />
-            <p className="text-xs font-mono text-zinc-600 uppercase tracking-[0.2em] whitespace-nowrap">
+            <span className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+            <p className="text-xs font-mono text-zinc-500 dark:text-zinc-600 uppercase tracking-[0.2em] whitespace-nowrap">
               Tech Stack
             </p>
-            <span className="h-px flex-1 bg-zinc-800" />
+            <span className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
           </div>
 
           <div className="flex flex-wrap justify-center gap-3">
@@ -236,13 +229,15 @@ export default function HeroSection() {
                 style={{ animationDelay: `${0.6 + i * 0.05}s` }}
                 className="
                   flex items-center gap-2 px-4 py-2.5 rounded-xl
-                  bg-zinc-900 border border-zinc-800 hover:border-zinc-600
+                  bg-white/80 dark:bg-zinc-900 
+                  border border-zinc-200 dark:border-zinc-800 
+                  hover:border-zinc-400 dark:hover:border-zinc-600
                   transition-colors duration-200 cursor-default
                   group
                 "
               >
                 <Icon className="text-lg transition-colors duration-200" style={{ color }} />
-                <span className="text-zinc-400 group-hover:text-white text-xs font-mono transition-colors duration-200">
+                <span className="text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white text-xs font-mono transition-colors duration-200">
                   {label}
                 </span>
               </motion.div>
@@ -252,7 +247,7 @@ export default function HeroSection() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-zinc-700"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-zinc-500 dark:text-zinc-700"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
@@ -261,7 +256,7 @@ export default function HeroSection() {
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-8 bg-gradient-to-b from-zinc-600 to-transparent"
+            className="w-px h-8 bg-gradient-to-b from-zinc-400 dark:from-zinc-600 to-transparent"
           />
         </motion.div>
       </section>
@@ -270,34 +265,24 @@ export default function HeroSection() {
       <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50">
         <div className="
           flex items-center gap-1 px-4 py-2.5
-          bg-zinc-900/80 backdrop-blur-md
-          border border-zinc-800/80
-          rounded-2xl shadow-2xl shadow-black/40
+          bg-white/80 dark:bg-zinc-900/80 
+          backdrop-blur-md
+          border border-zinc-200/80 dark:border-zinc-800/80
+          rounded-2xl shadow-2xl shadow-black/10 dark:shadow-black/40
         ">
           {/* Divider after Home */}
           {navLinks.map(({ Icon, label, href, action }, i) => (
             <div key={label} className="flex items-center">
               <DockIcon Icon={Icon} label={label} href={href} action={action} />
               {i === 0 && (
-                <span className="mx-2 h-5 w-px bg-zinc-700/60 rounded-full" />
+                <span className="mx-2 h-5 w-px bg-zinc-300 dark:bg-zinc-700/60 rounded-full" />
               )}
             </div>
           ))}
 
           {/* Divider + theme toggle */}
-          <span className="mx-2 h-5 w-px bg-zinc-700/60 rounded-full" />
-          <motion.button
-            whileHover={{ y: -4, scale: 1.2 }}
-            transition={{ type: "spring", stiffness: 400, damping: 18 }}
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="w-9 h-9 flex items-center justify-center rounded-xl text-zinc-400 hover:text-orange-400 hover:bg-orange-500/10 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark"
-              ? <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 1.78a1 1 0 011.42 1.42l-.71.7a1 1 0 11-1.42-1.41l.71-.71zm-9.85 0l.71.71A1 1 0 115.67 5.9l-.71-.71a1 1 0 011.41-1.41zM10 6a4 4 0 100 8 4 4 0 000-8zm-8 4a1 1 0 011-1h1a1 1 0 010 2H3a1 1 0 01-1-1zm14 0a1 1 0 011-1h1a1 1 0 010 2h-1a1 1 0 01-1-1zm-2.93 4.07a1 1 0 011.42 0l.7.71a1 1 0 01-1.41 1.41l-.71-.71a1 1 0 010-1.41zm-9.9 0a1 1 0 011.41 1.41l-.7.71a1 1 0 01-1.42-1.41l.71-.71zM10 17a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z"/></svg>
-              : <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-            }
-          </motion.button>
+          <span className="mx-2 h-5 w-px bg-zinc-300 dark:bg-zinc-700/60 rounded-full" />
+          <ThemeSwitcher />
         </div>
       </div>
     </>
