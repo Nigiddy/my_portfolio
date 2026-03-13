@@ -152,7 +152,7 @@ export default function HeroSection() {
         {/* WhatsApp */}
         <div className="relative group">
           <a
-            href="https://wa.me/254756521055"
+            href="https://wa.me/254775551019"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp contact"
