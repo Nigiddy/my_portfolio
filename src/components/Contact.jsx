@@ -1,20 +1,110 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import dynamic from "next/dynamic";
-import emailjs from "@emailjs/browser";  // ⬅️ Import EmailJS
+import {
+  FaArrowRight, FaCheck, FaCircleXmark,
+  FaClock, FaLocationDot, FaBriefcase,
+} from "react-icons/fa6";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import contactAnimation from "../animations/contact.json";
 
+/* ─────────────────────────────────────────────
+   AVAILABILITY CHIPS
+───────────────────────────────────────────── */
+const availability = [
+  { Icon: FaClock,        text: "Replies within 24h"        },
+  { Icon: FaLocationDot,  text: "Based in Nairobi, KE"      },
+  { Icon: FaBriefcase,    text: "Open to freelance & roles" },
+];
+
+/* ─────────────────────────────────────────────
+   FLOATING LABEL FIELD
+───────────────────────────────────────────── */
+function FloatingField({ label, name, type = "text", value, onChange, required, rows }) {
+  const [focused, setFocused] = useState(false);
+  const lifted = focused || value.length > 0;
+  const Tag = rows ? "textarea" : "input";
+
+  return (
+    <div className="relative">
+      <label
+        htmlFor={name}
+        className={`
+          absolute left-4 transition-all duration-200 pointer-events-none select-none z-10 font-mono
+          ${lifted
+            ? "top-2 text-[10px] tracking-widest uppercase text-orange-400"
+            : "top-4 text-sm text-zinc-500"
+          }
+        `}
+      >
+        {label}
+      </label>
+      <Tag
+        id={name}
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        required={required}
+        rows={rows}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        className={`
+          w-full bg-zinc-900/80 border rounded-xl px-4 text-white text-sm resize-none
+          transition-all duration-300 outline-none
+          ${lifted ? "pt-6 pb-3" : "pt-4 pb-3"}
+          ${focused
+            ? "border-orange-500 shadow-[0_0_0_3px_rgba(249,115,22,0.10)]"
+            : "border-zinc-800 hover:border-zinc-700"
+          }
+        `}
+        aria-label={label}
+      />
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   CHARACTER COUNTER
+───────────────────────────────────────────── */
+function CharCounter({ value, max }) {
+  const pct = value.length / max;
+  return (
+    <div className="flex items-center justify-end gap-2 mt-1">
+      <div className="h-0.5 w-24 bg-zinc-800 rounded-full overflow-hidden">
+        <div
+          className="h-full rounded-full transition-all duration-300"
+          style={{
+            width: `${Math.min(pct * 100, 100)}%`,
+            background: pct > 0.9 ? "#ef4444" : pct > 0.7 ? "#f97316" : "#52525b",
+          }}
+        />
+      </div>
+      <span className={`text-[10px] font-mono tabular-nums ${pct > 0.9 ? "text-red-400" : "text-zinc-600"}`}>
+        {value.length}/{max}
+      </span>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   MAIN EXPORT
+───────────────────────────────────────────── */
+const MESSAGE_MAX = 600;
+
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData]     = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);  // ⬅️ Error state
+  const [submitted, setSubmitted]   = useState(false);
+  const [error, setError]           = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "message" && value.length > MESSAGE_MAX) return;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -22,108 +112,270 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setError(false);
 
-    const serviceID = "service_tma1txo";
-    const templateID = "template_yhbc2ee";
-    const publicKey = "s6MdDHMR7W3P6s2EJ";
-
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      message: formData.message,
-    };
-
     try {
-      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      await emailjs.send(
+        "service_tma1txo",
+        "template_yhbc2ee",
+        {
+          from_name:  formData.name,
+          from_email: formData.email,
+          subject:    formData.subject,
+          message:    formData.message,
+        },
+        "s6MdDHMR7W3P6s2EJ"
+      );
       setSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-
-      setTimeout(() => setSubmitted(false), 4000);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSubmitted(false), 6000);
     } catch (err) {
-      console.error("Email send error:", err);
+      console.error("EmailJS error:", err);
       setError(true);
+      setTimeout(() => setError(false), 6000);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="relative w-full py-16 px-6 sm:px-12 bg-white dark:bg-black transition-colors">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section id="contact" className="relative w-full py-24 bg-zinc-950 overflow-hidden">
 
-        {/* Animation */}
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }} 
-          animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 0.8 }}
-          className="flex justify-center"
-        >
-          <Lottie animationData={contactAnimation} loop autoPlay className="w-72 sm:w-96" />
-        </motion.div>
+      {/* Keyframes */}
+      <style>{`
+        @keyframes gradientShift {
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .btn-shimmer {
+          background: linear-gradient(90deg, #f97316 0%, #fb923c 40%, #fde68a 50%, #fb923c 60%, #f97316 100%);
+          background-size: 200% auto;
+          animation: gradientShift 2.5s linear infinite;
+        }
+      `}</style>
 
-        {/* Contact Form */}
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }} 
-          animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 0.8 }}
-          className="w-full bg-gray-100 dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-md"
+      {/* Ambient glows */}
+      <div aria-hidden className="pointer-events-none absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-10"
+        style={{ background: "radial-gradient(circle, #f97316 0%, transparent 70%)" }} />
+      <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-32 w-[420px] h-[420px] rounded-full opacity-10"
+        style={{ background: "radial-gradient(circle, #8b5cf6 0%, transparent 70%)" }} />
+
+      {/* Grid overlay */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        style={{
+          backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-14"
         >
-          <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">
-            Get in Touch
+          <div className="flex items-center gap-2 mb-3">
+            <span className="h-px w-8 bg-orange-500" />
+            <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em]">Say Hello</p>
+          </div>
+          <h2 className="text-5xl font-black text-white tracking-tight leading-tight">
+            Let's Build<br />Something.
           </h2>
-
-          <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
-            <input 
-              type="text" 
-              name="name" 
-              placeholder="Your Name" 
-              value={formData.name} 
-              onChange={handleChange} 
-              className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required 
-              aria-label="Your Name"
-            />
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Your Email" 
-              value={formData.email} 
-              onChange={handleChange} 
-              className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required 
-              aria-label="Your Email"
-            />
-            <textarea 
-              name="message" 
-              placeholder="Your Message" 
-              value={formData.message} 
-              onChange={handleChange} 
-              rows="4" 
-              className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-              aria-label="Your Message"
-            ></textarea>
-            <button 
-              type="submit" 
-              className={`w-full p-3 rounded-lg text-white transition ${
-                isSubmitting ? "bg-blue-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
-              }`}
-              disabled={isSubmitting}
-              aria-label="Send Message"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
-          </form>
-          {submitted && (
-            <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-center" role="status" aria-live="polite">
-              Message sent successfully!
-            </div>
-          )}
-          {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-center" role="alert" aria-live="assertive">
-              Failed to send message. Please try again.
-            </div>
-          )}
+          <p className="mt-4 text-zinc-500 text-base max-w-lg leading-relaxed">
+            Have a project in mind, a role to fill, or just want to talk shop?
+            Fill in the form and I'll get back to you.
+          </p>
         </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
+
+          {/* ── LEFT PANEL ── */}
+          <motion.div
+            className="md:col-span-2 flex flex-col gap-8"
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {/* Lottie */}
+            <div className="flex justify-center md:justify-start">
+              <Lottie
+                animationData={contactAnimation}
+                loop
+                autoPlay
+                className="w-52 sm:w-64 opacity-90"
+              />
+            </div>
+
+            {/* Availability chips */}
+            <div className="flex flex-col gap-3">
+              <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-[0.2em] mb-1">
+                Availability
+              </p>
+              {availability.map(({ Icon, text }) => (
+                <div
+                  key={text}
+                  className="flex items-center gap-3 px-4 py-3 bg-zinc-900/60 border border-zinc-800 rounded-xl"
+                >
+                  <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-orange-500/10 flex-shrink-0">
+                    <Icon className="text-orange-400 text-xs" />
+                  </span>
+                  <span className="text-sm text-zinc-300">{text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Decorative quote */}
+            <div className="hidden md:block border-l-2 border-orange-500/30 pl-4">
+              <p className="text-zinc-600 text-sm italic leading-relaxed">
+                "Great products are built on great communication."
+              </p>
+            </div>
+          </motion.div>
+
+          {/* ── FORM ── */}
+          <motion.div
+            className="md:col-span-3"
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-4"
+                aria-label="Contact form"
+                noValidate
+              >
+                {/* Name + Email row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <FloatingField
+                    label="Your Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <FloatingField
+                    label="Your Email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                {/* Subject */}
+                <FloatingField
+                  label="Subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                />
+
+                {/* Message + counter */}
+                <div>
+                  <FloatingField
+                    label="Your Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                  />
+                  <CharCounter value={formData.message} max={MESSAGE_MAX} />
+                </div>
+
+                {/* Submit button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting || submitted}
+                  className={`
+                    mt-1 w-full py-3.5 px-6 rounded-xl font-semibold text-sm text-white
+                    flex items-center justify-center gap-2 transition-all duration-300
+                    disabled:opacity-60 disabled:cursor-not-allowed
+                    ${!isSubmitting && !submitted
+                      ? "btn-shimmer shadow-lg shadow-orange-500/20 hover:shadow-orange-400/30 hover:scale-[1.01]"
+                      : "bg-zinc-700"
+                    }
+                  `}
+                  aria-label="Send Message"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Sending…
+                    </>
+                  ) : submitted ? (
+                    <>
+                      <FaCheck className="text-emerald-400" />
+                      Message Sent!
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <FaArrowRight className="text-xs" />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              {/* Status toasts */}
+              <AnimatePresence>
+                {submitted && (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    className="mt-4 flex items-start gap-3 px-4 py-3.5 bg-emerald-500/10 border border-emerald-500/25 rounded-xl text-emerald-400 text-sm"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    <FaCheck className="flex-shrink-0 mt-0.5" />
+                    <span>
+                      <strong className="font-semibold text-emerald-300">Got it!</strong>{" "}
+                      I'll reply within 24 hours.
+                    </span>
+                  </motion.div>
+                )}
+                {error && (
+                  <motion.div
+                    key="error"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    className="mt-4 flex items-start gap-3 px-4 py-3.5 bg-red-500/10 border border-red-500/25 rounded-xl text-red-400 text-sm"
+                    role="alert"
+                    aria-live="assertive"
+                  >
+                    <FaCircleXmark className="flex-shrink-0 mt-0.5" />
+                    <span>
+                      <strong className="font-semibold text-red-300">Couldn't send that.</strong>{" "}
+                      Try emailing me directly at{" "}
+                      <a
+                        href="mailto:hello@yourportfolio.dev"
+                        className="underline underline-offset-2 hover:text-red-300 transition-colors"
+                      >
+                        hello@yourportfolio.dev
+                      </a>
+                    </span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Footer note */}
+            <p className="mt-4 text-center text-xs text-zinc-700 font-mono">
+              No spam. No cold pitches. Just real conversations.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
