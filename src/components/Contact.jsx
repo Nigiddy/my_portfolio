@@ -7,6 +7,8 @@ import {
   FaArrowRight, FaCheck, FaCircleXmark,
   FaClock, FaLocationDot, FaBriefcase,
 } from "react-icons/fa6";
+import FloatingField from "./contact/FloatingField";
+import CharCounter from "./contact/CharCounter";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import contactAnimation from "../animations/contact.json";
@@ -19,76 +21,6 @@ const availability = [
   { Icon: FaLocationDot,  text: "Based in Nairobi, KE"      },
   { Icon: FaBriefcase,    text: "Open to freelance & roles" },
 ];
-
-/* ─────────────────────────────────────────────
-   FLOATING LABEL FIELD
-───────────────────────────────────────────── */
-function FloatingField({ label, name, type = "text", value, onChange, required, rows }) {
-  const [focused, setFocused] = useState(false);
-  const lifted = focused || value.length > 0;
-  const Tag = rows ? "textarea" : "input";
-
-  return (
-    <div className="relative">
-      <label
-        htmlFor={name}
-        className={`
-          absolute left-4 transition-all duration-200 pointer-events-none select-none z-10 font-mono
-          ${lifted
-            ? "top-2 text-[10px] tracking-widest uppercase text-orange-400"
-            : "top-4 text-sm text-zinc-500"
-          }
-        `}
-      >
-        {label}
-      </label>
-      <Tag
-        id={name}
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        required={required}
-        rows={rows}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        className={`
-          w-full bg-zinc-900/80 border rounded-xl px-4 text-white text-sm resize-none
-          transition-all duration-300 outline-none
-          ${lifted ? "pt-6 pb-3" : "pt-4 pb-3"}
-          ${focused
-            ? "border-orange-500 shadow-[0_0_0_3px_rgba(249,115,22,0.10)]"
-            : "border-zinc-800 hover:border-zinc-700"
-          }
-        `}
-        aria-label={label}
-      />
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   CHARACTER COUNTER
-───────────────────────────────────────────── */
-function CharCounter({ value, max }) {
-  const pct = value.length / max;
-  return (
-    <div className="flex items-center justify-end gap-2 mt-1">
-      <div className="h-0.5 w-24 bg-zinc-800 rounded-full overflow-hidden">
-        <div
-          className="h-full rounded-full transition-all duration-300"
-          style={{
-            width: `${Math.min(pct * 100, 100)}%`,
-            background: pct > 0.9 ? "#ef4444" : pct > 0.7 ? "#f97316" : "#52525b",
-          }}
-        />
-      </div>
-      <span className={`text-[10px] font-mono tabular-nums ${pct > 0.9 ? "text-red-400" : "text-zinc-600"}`}>
-        {value.length}/{max}
-      </span>
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────────
    MAIN EXPORT
