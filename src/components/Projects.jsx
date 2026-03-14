@@ -109,7 +109,7 @@ export default function Projects() {
   const [active, setActive] = useState(null);
 
   return (
-    <section className="w-full py-20 bg-zinc-950 transition-colors">
+    <section id="projects" className="w-full py-20 bg-zinc-950 transition-colors">
       {/* Keyframe styles injected inline */}
       <style>{`
         @keyframes gradientShift {
