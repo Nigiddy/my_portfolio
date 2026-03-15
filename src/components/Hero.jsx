@@ -9,6 +9,7 @@ import { FaHouse } from "react-icons/fa6";
 import dynamic from "next/dynamic";
 import DockIcon from "./hero/DockIcon";
 import ThemeSwitcher from "./theme/ThemeSwitcher";
+import Wrapper from "./Wrapper";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import laptopAnimation from "../animations/laptop.json";
@@ -84,7 +85,7 @@ export default function HeroSection() {
       {/* ─── HERO ─── */}
       <section
         id="home"
-        className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-zinc-950 overflow-hidden"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center bg-zinc-950 overflow-hidden"
       >
         {/* Background ambient glows */}
         <div
@@ -106,7 +107,8 @@ export default function HeroSection() {
           }}
         />
 
-        <div className="relative z-10 max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <Wrapper className="relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           {/* ── Text ── */}
           <motion.div
@@ -200,10 +202,11 @@ export default function HeroSection() {
             />
           </motion.div>
         </div>
+        </Wrapper>
 
         {/* ── Tech Stack ── */}
+        <Wrapper className="relative z-10 mt-20">
         <motion.div
-          className="relative z-10 mt-20 w-full max-w-5xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -244,6 +247,7 @@ export default function HeroSection() {
             ))}
           </div>
         </motion.div>
+        </Wrapper>
 
         {/* Scroll indicator */}
         <motion.div

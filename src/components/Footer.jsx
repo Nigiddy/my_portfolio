@@ -1,4 +1,5 @@
 "use client";
+import Wrapper from "./Wrapper";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -16,7 +17,7 @@ export default function Footer() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <Wrapper className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
 
         {/* Name / brand */}
         <p className="text-sm font-mono text-zinc-600">
@@ -29,7 +30,7 @@ export default function Footer() {
           © {year} · Bringing ideas to reality ☕
         </p>
 
-      </div>
+      </Wrapper>
     </footer>
   );
 }

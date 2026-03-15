@@ -11,6 +11,7 @@ import {
 
 import ProjectCard from "./project/ProjectCard";
 import DetailPanel from "./project/DetailPanel";
+import Wrapper from "./Wrapper";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -139,7 +140,7 @@ export default function Projects() {
         }
       `}</style>
 
-      <div className="max-w-5xl mx-auto px-6">
+      <Wrapper>
         {/* Section heading */}
         <div className="mb-12">
           <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em] mb-2">Selected Work</p>
@@ -192,7 +193,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
-      </div>
+      </Wrapper>
 
       {/* Detail panel */}
       {active && <DetailPanel project={active} onClose={() => setActive(null)} />}

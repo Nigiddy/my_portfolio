@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Code2, MonitorSmartphone, Server, Brush, ArrowRight } from "lucide-react";
 import ServiceCard from "./services/ServiceCard";
 import ServiceModal from "./services/ServiceModal";
+import Wrapper from "./Wrapper";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -93,7 +94,7 @@ export default function ServicesPage() {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6">
+      <Wrapper className="relative z-10">
 
         {/* Heading */}
         <motion.div
@@ -158,7 +159,7 @@ export default function ServicesPage() {
             <ArrowRight className="w-4 h-4" />
           </a>
         </motion.div>
-      </div>
+      </Wrapper>
 
       {/* Modal */}
       <AnimatePresence>

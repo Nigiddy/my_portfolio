@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa6";
 import FloatingField from "./contact/FloatingField";
 import CharCounter from "./contact/CharCounter";
+import Wrapper from "./Wrapper";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import contactAnimation from "../animations/contact.json";
@@ -99,7 +100,7 @@ export default function ContactSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6">
+      <Wrapper className="relative z-10">
 
         {/* Heading */}
         <motion.div
@@ -307,7 +308,7 @@ export default function ContactSection() {
             </p>
           </motion.div>
         </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }
