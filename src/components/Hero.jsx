@@ -84,7 +84,7 @@ export default function HeroSection() {
       {/* ─── HERO ─── */}
       <section
         id="home"
-        className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white dark:bg-zinc-950 overflow-hidden"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-zinc-950 overflow-hidden"
       >
         {/* Background ambient glows */}
         <div
@@ -98,10 +98,12 @@ export default function HeroSection() {
           style={{ background: "radial-gradient(circle, #8b5cf6 0%, transparent 65%)" }}
         />
 
-        {/* Subtle grid overlay */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-black/5 dark:bg-white/5"
+        {/* Grid overlay */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
         />
 
         <div className="relative z-10 max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
