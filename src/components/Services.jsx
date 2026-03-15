@@ -94,7 +94,7 @@ export default function ServicesPage() {
         }}
       />
 
-      <Wrapper className="relative z-10">
+      <Wrapper className="relative z-10 max-w-5xl">
 
         {/* Heading */}
         <motion.div

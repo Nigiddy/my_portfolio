@@ -140,7 +140,7 @@ export default function Projects() {
         }
       `}</style>
 
-      <Wrapper>
+      <Wrapper className="max-w-5xl">
         {/* Section heading */}
         <div className="mb-12">
           <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em] mb-2">Selected Work</p>

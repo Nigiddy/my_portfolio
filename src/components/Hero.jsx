@@ -12,7 +12,7 @@ import ThemeSwitcher from "./theme/ThemeSwitcher";
 import Wrapper from "./Wrapper";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import laptopAnimation from "../animations/laptop.json";
+import { laptopAnimation } from "../animations";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -107,7 +107,7 @@ export default function HeroSection() {
           }}
         />
 
-        <Wrapper className="relative z-10">
+        <Wrapper className="relative z-10 max-w-5xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           {/* ── Text ── */}
@@ -205,7 +205,7 @@ export default function HeroSection() {
         </Wrapper>
 
         {/* ── Tech Stack ── */}
-        <Wrapper className="relative z-10 mt-20">
+        <Wrapper className="relative z-10 mt-20 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}

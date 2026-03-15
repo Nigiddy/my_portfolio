@@ -12,7 +12,7 @@ import CharCounter from "./contact/CharCounter";
 import Wrapper from "./Wrapper";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import contactAnimation from "../animations/contact.json";
+import { contactAnimation } from "../animations";
 
 /* ─────────────────────────────────────────────
    AVAILABILITY CHIPS
@@ -100,7 +100,7 @@ export default function ContactSection() {
         }}
       />
 
-      <Wrapper className="relative z-10">
+      <Wrapper className="relative z-10 max-w-5xl">
 
         {/* Heading */}
         <motion.div

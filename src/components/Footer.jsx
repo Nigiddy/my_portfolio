@@ -17,7 +17,7 @@ export default function Footer() {
         }}
       />
 
-      <Wrapper className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <Wrapper className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-5xl">
 
         {/* Name / brand */}
         <p className="text-sm font-mono text-zinc-600">

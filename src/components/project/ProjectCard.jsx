@@ -9,6 +9,7 @@ import {
   SiVite, SiTypescript, SiTailwindcss,
   SiSupabase, SiPostgresql
 } from "react-icons/si";
+import Card from "../common/Card";
 import GlowBorder from "./GlowBorder";
 
 /** Individual bento card */
@@ -20,22 +21,13 @@ export default function ProjectCard({
   const [hovered, setHovered] = useState(false);
 
   const inner = (
-    <div
+    <Card
       role="button"
       tabIndex={0}
       onClick={onClick}
       onKeyDown={(e) => e.key === "Enter" && onClick()}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="
-        group relative flex flex-col h-full cursor-pointer
-        bg-zinc-900/80 backdrop-blur-sm
-        rounded-2xl overflow-hidden
-        border border-zinc-800/60 hover:border-zinc-600/80
-        transition-all duration-500
-        shadow-lg hover:shadow-2xl hover:shadow-black/40
-        hover:-translate-y-1
-      "
       style={style}
       aria-label={`Open details for ${project.title}`}
     >
@@ -122,7 +114,7 @@ export default function ProjectCard({
           ))}
         </div>
       </div>
-    </div>
+    </Card>
   );
 
   if (project.featured) {

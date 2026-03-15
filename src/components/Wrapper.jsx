@@ -9,7 +9,7 @@ export default function Wrapper({ children, className }) {
   return (
     <div
       className={`
-        w-full max-w-5xl mx-auto px-6 sm:px-8
+        w-full mx-auto px-6 sm:px-8
         ${className}
       `}
     >
