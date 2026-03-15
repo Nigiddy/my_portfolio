@@ -109,7 +109,15 @@ export default function Projects() {
   const [active, setActive] = useState(null);
 
   return (
-    <section id="projects" className="w-full py-20 bg-zinc-950 transition-colors">
+    <section id="projects" className="relative w-full py-20 bg-zinc-950 transition-colors overflow-hidden">
+      {/* Grid overlay */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        style={{
+          backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
       {/* Keyframe styles injected inline */}
       <style>{`
         @keyframes gradientShift {
