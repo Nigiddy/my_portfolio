@@ -145,7 +145,7 @@ export default function Projects() {
           <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em] mb-2">Selected Work</p>
           <h2 className="text-5xl font-black text-white tracking-tight">Projects</h2>
           <p className="mt-3 text-zinc-500 text-base max-w-xl">
-            Real products, live users, real money moving. Click any card for the full story.
+            Real products, live users, real money moving.
           </p>
         </div>
 

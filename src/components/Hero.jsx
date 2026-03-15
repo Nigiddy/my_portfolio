@@ -142,9 +142,7 @@ export default function HeroSection() {
               className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed max-w-md"
               style={{ animation: "fadeSlideUp 0.5s ease 0.3s both" }}
             >
-              I build fast, beautiful, and revenue-generating web products —
-              from M-Pesa integrations to multi-tenant SaaS platforms.
-              Based in Nairobi, shipping globally.
+              I build high-performance, conversion-focused web products—from seamless M-Pesa integrations to scalable multi-tenant SaaS. A Full-Stack Developer and UI/UX Designer based in Nairobi, shipping world-class digital experiences globally.
             </p>
 
             {/* CTAs */}

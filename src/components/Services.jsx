@@ -148,7 +148,7 @@ export default function ServicesPage() {
         >
           <div>
             <p className="text-white font-semibold text-sm">Have a project in mind?</p>
-            <p className="text-zinc-500 text-xs mt-0.5">Let's talk scope, timeline, and budget — no strings attached.</p>
+            <p className="text-zinc-500 text-xs mt-0.5">Let's talk scope, timeline, and budget. </p>
           </div>
           <a
             href="#contact"

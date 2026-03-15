@@ -118,7 +118,6 @@ export default function ContactSection() {
           </h2>
           <p className="mt-4 text-zinc-500 text-base max-w-lg leading-relaxed">
             Have a project in mind, a role to fill, or just want to talk shop?
-            Fill in the form and I'll get back to you.
           </p>
         </motion.div>
 
