@@ -131,7 +131,7 @@ export default function HeroSection() {
             {/* Name */}
             <div style={{ animation: "fadeSlideUp 0.5s ease 0.2s both" }}>
               <p className="text-zinc-600 dark:text-zinc-500 text-sm font-mono mb-1">Hey there 👋 I'm</p>
-              <h1 className="text-5xl sm:text-6xl font-black tracking-tight leading-none">
+              <h1 className="text-fluid-heading-1 font-black tracking-tight leading-none">
                 <span className="name-gradient">Gideon</span>
                 <br />
                 <span className="text-black dark:text-white">Papa</span>
@@ -141,7 +141,7 @@ export default function HeroSection() {
 
             {/* Bio */}
             <p
-              className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed max-w-md"
+              className="text-zinc-700 dark:text-zinc-400 text-fluid-body leading-relaxed max-w-md"
               style={{ animation: "fadeSlideUp 0.5s ease 0.3s both" }}
             >
               I build high-performance, conversion-focused web products—from seamless M-Pesa integrations to scalable multi-tenant SaaS. A Full-Stack Developer and UI/UX Designer based in Nairobi, shipping world-class digital experiences globally.

@@ -114,10 +114,10 @@ export default function ContactSection() {
             <span className="h-px w-8 bg-orange-500" />
             <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em]">Say Hello</p>
           </div>
-          <h2 className="text-5xl font-black text-white tracking-tight leading-tight">
+          <h2 className="text-fluid-heading-2 font-black text-white tracking-tight leading-tight">
             Let's Build<br />Something.
           </h2>
-          <p className="mt-4 text-zinc-500 text-base max-w-lg leading-relaxed">
+          <p className="mt-4 text-zinc-500 text-fluid-body max-w-lg leading-relaxed">
             Have a project in mind, a role to fill, or just want to talk shop?
           </p>
         </motion.div>

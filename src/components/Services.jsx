@@ -80,7 +80,10 @@ export default function ServicesPage() {
   const [active, setActive] = useState(null);
 
   return (
-    <section id="services" className="relative w-full py-24 bg-zinc-950 overflow-hidden">
+    <section
+      id="services"
+      className="relative w-full overflow-hidden bg-zinc-950 px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+    >
 
       {/* Ambient glows */}
       <div aria-hidden className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] opacity-[0.07]"
@@ -102,16 +105,20 @@ export default function ServicesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-12 sm:mb-16"
         >
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2">
             <span className="h-px w-8 bg-orange-500" />
-            <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em]">What I Do</p>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-orange-400">
+              What I Do
+            </p>
           </div>
-          <h2 className="text-5xl font-black text-white tracking-tight">Services</h2>
-          <p className="mt-4 text-zinc-500 text-base max-w-lg leading-relaxed">
-            From idea to deployed product — I cover the full spectrum.
-            Click any card to see what's included.
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+            Services
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-500">
+            From idea to deployed product — I cover the full spectrum. Click
+            any card to see what's included.
           </p>
         </motion.div>
 
