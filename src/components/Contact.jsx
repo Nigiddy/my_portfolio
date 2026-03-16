@@ -47,15 +47,15 @@ export default function ContactSection() {
 
     try {
       await emailjs.send(
-        "service_tma1txo",
-        "template_yhbc2ee",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
           from_name:  formData.name,
           from_email: formData.email,
           subject:    formData.subject,
           message:    formData.message,
         },
-        "s6MdDHMR7W3P6s2EJ"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC
       );
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
