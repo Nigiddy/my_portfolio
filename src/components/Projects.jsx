@@ -12,6 +12,8 @@ import {
 import ProjectCard from "./project/ProjectCard";
 import DetailPanel from "./project/DetailPanel";
 import Wrapper from "./Wrapper";
+import GridOverlay from "./common/GridOverlay";
+import SectionHeading from "./common/SectionHeading";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -111,23 +113,15 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative w-full py-20 bg-zinc-950 transition-colors overflow-hidden">
-      {/* Grid overlay */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <GridOverlay />
 
       <Wrapper className="max-w-5xl">
-        {/* Section heading */}
-        <div className="mb-12">
-          <p className="text-xs font-mono text-orange-400 uppercase tracking-[0.2em] mb-2">Selected Work</p>
-          <h2 className="text-fluid-heading-2 font-black text-white tracking-tight">Projects</h2>
-          <p className="mt-3 text-zinc-500 text-fluid-body max-w-xl">
-            Real products, live users, real money moving.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Selected Work"
+          title="Projects"
+          subtitle="Real products, live users, real money moving."
+          className="mb-12"
+        />
 
         {/* Bento grid */}
         <div

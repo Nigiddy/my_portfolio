@@ -1,4 +1,6 @@
+"use client";
 import { motion } from "framer-motion";
+
 import { ArrowRight, X } from "lucide-react";
 
 export default function ServiceModal({ service, onClose }) {

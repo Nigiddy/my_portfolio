@@ -92,3 +92,8 @@ html {
 .animate-fadeIn       { animation: fadeIn        0.2s ease; }
 .animate-slideUp      { animation: slideUp       0.3s cubic-bezier(0.16,1,0.3,1); }
 .animate-cardReveal   { animation: cardReveal    0.5s ease both; }
+
+/* ── Hide scrollbar (mobile horizontal scroll rows) ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+

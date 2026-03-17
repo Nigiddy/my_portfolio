@@ -1,10 +1,13 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { Code2, MonitorSmartphone, Server, Brush, ArrowRight } from "lucide-react";
 import ServiceCard from "./services/ServiceCard";
 import ServiceModal from "./services/ServiceModal";
 import Wrapper from "./Wrapper";
+import { motion } from "framer-motion";
+import GridOverlay from "./common/GridOverlay";
+import SectionHeading from "./common/SectionHeading";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -82,45 +85,20 @@ export default function ServicesPage() {
   return (
     <section
       id="services"
-      className="relative w-full overflow-hidden bg-zinc-950 px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+      className="relative w-full overflow-hidden bg-zinc-950 py-16 sm:py-24"
     >
-
-      {/* Ambient glows */}
+      {/* Ambient glow */}
       <div aria-hidden className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] opacity-[0.07]"
         style={{ background: "radial-gradient(ellipse, #f97316 0%, transparent 70%)" }} />
-
-      {/* Grid overlay */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <GridOverlay />
 
       <Wrapper className="relative z-10 max-w-5xl">
-
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <SectionHeading
+          eyebrow="What I Do"
+          title="Services"
+          subtitle="From idea to deployed product — I cover the full spectrum. Click any card to see what's included."
           className="mb-12 sm:mb-16"
-        >
-          <div className="flex items-center gap-2">
-            <span className="h-px w-8 bg-orange-500" />
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-orange-400">
-              What I Do
-            </p>
-          </div>
-          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Services
-          </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-500">
-            From idea to deployed product — I cover the full spectrum. Click
-            any card to see what's included.
-          </p>
-        </motion.div>
+        />
 
         {/* Bento grid — 2 large + 2 medium */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 auto-rows-fr">
