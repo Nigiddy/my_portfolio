@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { FaStore, FaUsers, FaMobileAlt } from "react-icons/fa";
 import {
-  FaJs, FaNodeJs, FaReact,
-  FaDatabase,
+  FaStore, FaUsers, FaMobileAlt,
+  FaJs, FaNodeJs, FaReact, FaDatabase,
 } from "react-icons/fa";
 import {
   SiVite, SiTypescript, SiTailwindcss,
@@ -13,12 +12,9 @@ import Card from "../common/Card";
 import GlowBorder from "./GlowBorder";
 
 /** Individual bento card */
-export default function ProjectCard({
-  project,
-  onClick,
-  style,
-}) {
+export default function ProjectCard({ project, onClick, style }) {
   const [hovered, setHovered] = useState(false);
+  const [gifLoaded, setGifLoaded] = useState(false);
 
   const inner = (
     <Card
@@ -38,17 +34,22 @@ export default function ProjectCard({
           src={project.image}
           alt={project.title}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover transition-opacity duration-500"
-          style={{ opacity: hovered ? 0 : 1 }}
+          style={{ opacity: hovered && gifLoaded ? 0 : 1 }}
         />
-        {/* GIF on hover — next/image doesn't support unoptimized gifs well, use img tag */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={project.demoGif}
-          alt={`${project.title} demo`}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
-          style={{ opacity: hovered ? 1 : 0 }}
-        />
+        {/* GIF loaded lazily on first hover — avoids bandwidth waste */}
+        {hovered && (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={project.demoGif}
+            alt={`${project.title} demo`}
+            loading="lazy"
+            onLoad={() => setGifLoaded(true)}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+            style={{ opacity: gifLoaded ? 1 : 0 }}
+          />
+        )}
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent" />

@@ -1,6 +1,3 @@
-"use client";
-import Wrapper from "./Wrapper";
-
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -17,12 +14,12 @@ export default function Footer() {
         }}
       />
 
-      <Wrapper className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-5xl">
+      <div className="w-full mx-auto px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-5xl">
 
         {/* Name / brand */}
         <p className="text-sm font-mono text-zinc-600">
           <span className="text-white font-bold">Gideon Papa</span>
-          {" "}— Full-Stack Developer & UI/UX Designer
+          {" "}— Full-Stack Developer &amp; UI/UX Designer
         </p>
 
         {/* Copyright */}
@@ -30,7 +27,7 @@ export default function Footer() {
           © {year} · Bringing ideas to reality ☕
         </p>
 
-      </Wrapper>
+      </div>
     </footer>
   );
 }

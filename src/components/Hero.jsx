@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FaLinkedin, FaGithub, FaWhatsapp, FaInstagram,
@@ -6,13 +7,10 @@ import {
 } from "react-icons/fa";
 import { SiX, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { FaHouse } from "react-icons/fa6";
-import dynamic from "next/dynamic";
 import DockIcon from "./hero/DockIcon";
 import ThemeSwitcher from "./theme/ThemeSwitcher";
 import Wrapper from "./Wrapper";
-
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import { laptopAnimation } from "../animations";
+import LottiePlayer from "./common/LottiePlayer";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -41,47 +39,17 @@ const navLinks = [
    MAIN EXPORT
 ───────────────────────────────────────────── */
 export default function HeroSection() {
+  // Lazily fetch animation data — keeps it out of the JS bundle
+  const [laptopAnim, setLaptopAnim] = useState(null);
+
+  useEffect(() => {
+    fetch("/animations/laptop.json")
+      .then((r) => r.json())
+      .then(setLaptopAnim);
+  }, []);
 
   return (
     <>
-      <style>{`
-        @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(16px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes cursorBlink {
-          0%, 100% { opacity: 1; }
-          50%       { opacity: 0; }
-        }
-        @keyframes orbit {
-          from { transform: rotate(0deg)   translateX(90px) rotate(0deg); }
-          to   { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
-        }
-        .cursor {
-          display: inline-block;
-          width: 3px;
-          height: 1.1em;
-          background: #f97316;
-          margin-left: 3px;
-          vertical-align: middle;
-          animation: cursorBlink 1s step-end infinite;
-          border-radius: 2px;
-        }
-        @keyframes gradientShift {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .name-gradient {
-          background: linear-gradient(90deg, #f97316, #ec4899, #f97316);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: gradientShift 4s ease infinite;
-        }
-      `}</style>
-
       {/* ─── HERO ─── */}
       <section
         id="home"
@@ -119,17 +87,16 @@ export default function HeroSection() {
           >
             {/* Eyebrow */}
             <div
-              className="flex items-center gap-2"
-              style={{ animation: "fadeSlideUp 0.5s ease 0.1s both" }}
+              className="flex items-center gap-2 animate-fadeSlideUp"
             >
               <span className="h-px w-8 bg-orange-500" />
               <span className="text-xs font-mono text-orange-500 dark:text-orange-400 uppercase tracking-[0.2em]">
-                Full-Stack Developer & UI/UX Designer
+                Full-Stack Developer &amp; UI/UX Designer
               </span>
             </div>
 
             {/* Name */}
-            <div style={{ animation: "fadeSlideUp 0.5s ease 0.2s both" }}>
+            <div className="animate-fadeSlideUp [animation-delay:100ms]">
               <p className="text-zinc-600 dark:text-zinc-500 text-sm font-mono mb-1">Hey there 👋 I'm</p>
               <h1 className="text-fluid-heading-1 font-black tracking-tight leading-none">
                 <span className="name-gradient">Gideon</span>
@@ -141,16 +108,14 @@ export default function HeroSection() {
 
             {/* Bio */}
             <p
-              className="text-zinc-700 dark:text-zinc-400 text-fluid-body leading-relaxed max-w-md"
-              style={{ animation: "fadeSlideUp 0.5s ease 0.3s both" }}
+              className="text-zinc-700 dark:text-zinc-400 text-fluid-body leading-relaxed max-w-md animate-fadeSlideUp [animation-delay:200ms]"
             >
               I build high-performance, conversion-focused web products—from seamless M-Pesa integrations to scalable multi-tenant SaaS. A Full-Stack Developer and UI/UX Designer based in Nairobi, shipping world-class digital experiences globally.
             </p>
 
             {/* CTAs */}
             <div
-              className="flex flex-wrap gap-3 mt-2"
-              style={{ animation: "fadeSlideUp 0.5s ease 0.4s both" }}
+              className="flex flex-wrap gap-3 mt-2 animate-fadeSlideUp [animation-delay:300ms]"
             >
               <a
                 href="#projects"
@@ -194,8 +159,8 @@ export default function HeroSection() {
               className="absolute w-64 h-64 rounded-full opacity-30 dark:opacity-20 blur-2xl"
               style={{ background: "radial-gradient(circle, #f97316, #ec4899)" }}
             />
-            <Lottie
-              animationData={laptopAnimation}
+            <LottiePlayer
+              animationData={laptopAnim}
               loop
               autoPlay
               className="w-64 sm:w-80 relative z-10 drop-shadow-2xl"
@@ -228,8 +193,6 @@ export default function HeroSection() {
                 transition={{ type: "spring", stiffness: 400, damping: 18 }}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                // @ts-ignore
-                style={{ animationDelay: `${0.6 + i * 0.05}s` }}
                 className="
                   flex items-center gap-2 px-4 py-2.5 rounded-xl
                   bg-white/80 dark:bg-zinc-900 

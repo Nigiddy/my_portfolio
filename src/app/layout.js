@@ -125,8 +125,6 @@ export default function RootLayout({ children }) {
         Next.js App Router injects all <metadata> fields automatically.
         No manual <head> tags needed — they caused duplication before.
       */}
-      <head>
-      </head>
 
       <body
         className={`

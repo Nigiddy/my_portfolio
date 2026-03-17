@@ -1,8 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import dynamic from "next/dynamic";
 import {
   FaArrowRight, FaCheck, FaCircleXmark,
   FaClock, FaLocationDot, FaBriefcase,
@@ -10,9 +9,7 @@ import {
 import FloatingField from "./contact/FloatingField";
 import CharCounter from "./contact/CharCounter";
 import Wrapper from "./Wrapper";
-
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import { contactAnimation } from "../animations";
+import LottiePlayer from "./common/LottiePlayer";
 
 /* ─────────────────────────────────────────────
    AVAILABILITY CHIPS
@@ -33,6 +30,15 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted]   = useState(false);
   const [error, setError]           = useState(false);
+
+  // Lazily fetch animation data — keeps it out of the JS bundle
+  const [contactAnim, setContactAnim] = useState(null);
+
+  useEffect(() => {
+    fetch("/animations/contact.json")
+      .then((r) => r.json())
+      .then(setContactAnim);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +61,7 @@ export default function ContactSection() {
           subject:    formData.subject,
           message:    formData.message,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
@@ -71,20 +77,6 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="relative w-full py-24 bg-zinc-950 overflow-hidden">
-
-      {/* Keyframes */}
-      <style>{`
-        @keyframes gradientShift {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .btn-shimmer {
-          background: linear-gradient(90deg, #f97316 0%, #fb923c 40%, #fde68a 50%, #fb923c 60%, #f97316 100%);
-          background-size: 200% auto;
-          animation: gradientShift 2.5s linear infinite;
-        }
-      `}</style>
 
       {/* Ambient glows */}
       <div aria-hidden className="pointer-events-none absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-10"
@@ -134,8 +126,8 @@ export default function ContactSection() {
           >
             {/* Lottie */}
             <div className="flex justify-center md:justify-start">
-              <Lottie
-                animationData={contactAnimation}
+              <LottiePlayer
+                animationData={contactAnim}
                 loop
                 autoPlay
                 className="w-52 sm:w-64 opacity-90"
@@ -291,10 +283,10 @@ export default function ContactSection() {
                       <strong className="font-semibold text-red-300">Couldn't send that.</strong>{" "}
                       Try emailing me directly at{" "}
                       <a
-                        href="mailto:hello@yourportfolio.dev"
+                        href="mailto:gideonpapa.dev@gmail.com"
                         className="underline underline-offset-2 hover:text-red-300 transition-colors"
                       >
-                        hello@yourportfolio.dev
+                        gideonpapa.dev@gmail.com
                       </a>
                     </span>
                   </motion.div>
