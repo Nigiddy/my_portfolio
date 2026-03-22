@@ -9,6 +9,14 @@ import { useSwipeable } from "react-swipeable";
 
 const projects = [
   {
+    title: "Mlami BBQ - Modern Restaurant Website",
+    description: "A modern BBQ restaurant management system with M-Pesa STK Push payment integration.",
+    techStack: [FaReact, SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql],
+    image: "/images/mlami.jpg",
+    repoLink: "https://demo-mlami.vercel.app/",
+    isDeployed: true
+  },
+  {
     title: "Mpesa-Based WiFi Billing System",
     description: "A billing system that integrates Mpesa for seamless WiFi payments.",
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
