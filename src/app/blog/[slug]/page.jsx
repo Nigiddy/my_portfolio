@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }) {
         <div className="h-px bg-blue-100 w-full my-8" />
 
         <article className="prose max-w-none">
-          <MDXRemote source={post.rawContent || post.mdxSource.compiledSource} />
+          <p>RAW CONTENT: {post.rawContent}</p>
         </article>
 
         <div className="mt-16 pt-8 border-t border-gray-100">
