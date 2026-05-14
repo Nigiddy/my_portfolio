@@ -53,8 +53,13 @@ export default function DockIcon({ Icon, label, href, action }) {
   );
 
   if (href) {
+    const isExternal = href.startsWith("http");
+    const aProps = isExternal 
+      ? { target: "_blank", rel: "noopener noreferrer" }
+      : {};
+      
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+      <a href={href} {...aProps} aria-label={label}>
         {inner}
       </a>
     );

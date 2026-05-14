@@ -1,6 +1,7 @@
 import {
   FaLinkedin, FaGithub, FaWhatsapp, FaInstagram,
   FaJs, FaNodeJs, FaReact, FaPython, FaAws, FaDatabase,
+  FaPen
 } from "react-icons/fa";
 import { SiX, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { FaHouse } from "react-icons/fa6";
@@ -17,7 +18,8 @@ export const techStack = [
 ];
 
 export const navLinks = [
-  { Icon: FaHouse,     label: "Home",      href: null,                                     action: "scrollTop" },
+  { Icon: FaHouse,     label: "Home",      href: "/",                                      action: "scrollTop" },
+  { Icon: FaPen,       label: "Writing",   href: "/blog"                                   },
   { Icon: FaGithub,    label: "GitHub",    href: "https://github.com/Nigiddy"              },
   { Icon: FaLinkedin,  label: "LinkedIn",  href: "https://www.linkedin.com/in/gideonpapa"  },
   { Icon: SiX,         label: "Twitter",   href: "https://x.com/niGiddy"                   },

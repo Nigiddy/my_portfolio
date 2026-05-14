@@ -1,0 +1,36 @@
+---
+title: "Building My Portfolio with Tailwind and Framer Motion"
+description: "How I designed and built this minimalist portfolio using modern web technologies."
+date: "2024-06-01"
+tag: "Design"
+readingTime: auto
+---
+
+Building a personal portfolio is often a developer's most over-engineered side project. For this iteration, I decided to keep things incredibly simple, focusing on clean typography, a minimalist white and blue aesthetic, and subtle animations.
+
+### The Design System
+
+I opted out of a complex dark mode implementation, choosing instead to focus entirely on a bright, readable light mode. I used `Tailwind CSS` to enforce strict design tokens. The primary accent is `blue-600`, contrasting against `gray-900` text on a stark `bg-white` background.
+
+### Adding Delight with Framer Motion
+
+To make the site feel alive without overwhelming the user, I implemented micro-animations using Framer Motion. The key was to ensure animations felt snappy and intentional, rather than slow and distracting.
+
+```javascript
+import { motion } from "framer-motion";
+
+export const FadeIn = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+  >
+    {children}
+  </motion.div>
+);
+```
+
+> "Good design is obvious. Great design is transparent." — Joe Sparano
+
+By combining Next.js Server Components for fast delivery and Framer Motion for client-side delight, the final result is a portfolio that feels both solid and fluid.

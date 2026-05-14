@@ -8,6 +8,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#111827',
+            a: { color: '#2563eb', '&:hover': { color: '#1d4ed8' } },
+            'h1,h2,h3,h4': { color: '#111827', fontWeight: '600' },
+            code: { color: '#2563eb', backgroundColor: '#eff6ff', padding: '2px 6px', borderRadius: '4px' },
+            'code::before': { content: 'none' },
+            'code::after': { content: 'none' },
+            pre: { backgroundColor: '#f8fafc', border: '1px solid #e2e8f0' },
+            blockquote: { borderLeftColor: '#2563eb', color: '#6b7280' },
+          }
+        }
+      },
       fontFamily: {
         sans: ["var(--font-syne)", ...fontFamily.sans],
         mono: ["var(--font-dm-mono)", ...fontFamily.mono],
@@ -33,5 +47,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
 };

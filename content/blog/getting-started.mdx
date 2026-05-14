@@ -1,0 +1,31 @@
+---
+title: "Getting Started with Next.js App Router"
+description: "A quick guide on how to migrate your existing React app to the new Next.js App Router."
+date: "2024-05-15"
+tag: "Development"
+readingTime: auto
+---
+
+The Next.js App Router brings exciting new paradigms to React development, mainly revolving around Server Components and nested layouts. It fundamentally changes how we think about rendering and data fetching.
+
+### Why Server Components?
+
+By default, components inside the `app/` directory are React Server Components (RSC). This means they render entirely on the server, resulting in zero client-side JavaScript for those components. This leads to faster initial page loads and improved SEO.
+
+```jsx
+// This runs only on the server
+export default async function Page() {
+  const data = await fetch('https://api.example.com/data');
+  const items = await data.json();
+  
+  return (
+    <ul>
+      {items.map(item => <li key={item.id}>{item.name}</li>)}
+    </ul>
+  );
+}
+```
+
+> "Server Components allow developers to build applications that span the server and client, combining the rich interactivity of client-side apps with the improved performance of traditional server rendering." 
+
+To add interactivity, you just add `'use client'` at the top of your file to opt-in to client-side rendering where needed. Mixing RSC and Client Components correctly is the key to mastering the App Router.
