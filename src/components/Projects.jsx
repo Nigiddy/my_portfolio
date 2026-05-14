@@ -21,8 +21,8 @@ const projects = [
     description: "A billing system that integrates Mpesa for seamless WiFi payments.",
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
     image: "/images/mpesa-wifi.jpg",
-    repoLink: "https://github.com/Nigiddy/Mpesa_Based-WiFi-Billing-System",
-    isDeployed: false
+    repoLink: "https://qonnectkibaruani.vercel.app/",
+    isDeployed: true
   },
   {
     title: "Mlami BBQ - Modern Restaurant Website",
