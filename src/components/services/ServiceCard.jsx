@@ -26,76 +26,55 @@ export default function ServiceCard({ service, index, onClick }) {
             <Card
                 className="
                     h-full
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600
                 "
             >
-                {/* Accent glow on hover */}
-                <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                    style={{
-                        background: `radial-gradient(ellipse at top left, ${service.accent}18 0%, transparent 60%)`,
-                    }}
-                />
-
-                {/* Top accent bar */}
-                <div
-                    className="h-[3px] w-full flex-shrink-0 transition-all duration-500"
-                    style={{
-                        background: hovered
-                            ? `linear-gradient(90deg, ${service.accent}, transparent)`
-                            : "transparent",
-                    }}
-                />
-
                 <div className="flex flex-col flex-1 p-6 gap-4 relative z-10">
 
                     {/* Icon + tagline */}
                     <div className="flex items-start justify-between">
                         <div
-                            className="w-11 h-11 flex items-center justify-center rounded-xl transition-colors duration-300"
-                            style={{ background: `${service.accent}18` }}
+                            className="w-11 h-11 flex items-center justify-center rounded-xl transition-colors duration-300 bg-blue-50"
                         >
                             <service.Icon
-                                className="w-5 h-5 transition-colors duration-300"
-                                style={{ color: service.accent }}
+                                className="w-5 h-5 transition-colors duration-300 text-blue-600"
                             />
                         </div>
 
                         {/* Stat badge */}
                         <div className="text-right">
-                            <p className="text-lg font-black text-white leading-none">{service.stat.value}</p>
-                            <p className="text-[10px] font-mono text-zinc-600 leading-tight">{service.stat.label}</p>
+                            <p className="text-lg font-black text-gray-900 leading-none">{service.stat.value}</p>
+                            <p className="text-[10px] font-mono text-gray-500 leading-tight">{service.stat.label}</p>
                         </div>
                     </div>
 
                     {/* Title + tagline */}
                     <div>
-                        <p className="text-[10px] font-mono uppercase tracking-widest mb-1" style={{ color: service.accent }}>
+                        <p className="text-[10px] font-mono uppercase tracking-widest mb-1 text-blue-600">
                             {service.tagline}
                         </p>
-                        <h3 className="text-lg font-bold text-white leading-snug group-hover:text-white transition-colors">
+                        <h3 className="text-lg font-bold text-gray-900 leading-snug transition-colors">
                             {service.title}
                         </h3>
                     </div>
 
                     {/* Description — only show on large cards by default */}
-                    <p className={`text-sm text-zinc-500 leading-relaxed ${service.size === "large" ? "line-clamp-2" : "line-clamp-3"}`}>
+                    <p className={`text-sm text-gray-500 leading-relaxed ${service.size === "large" ? "line-clamp-2" : "line-clamp-3"}`}>
                         {service.description}
                     </p>
 
                     {/* Bullet previews */}
                     <ul className="flex flex-col gap-1.5 mt-auto">
                         {service.bullets.slice(0, 2).map((b, i) => (
-                            <li key={i} className="flex items-center gap-2 text-xs text-zinc-500">
-                                <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: service.accent }} />
+                            <li key={i} className="flex items-center gap-2 text-xs text-gray-500">
+                                <span className="w-1 h-1 rounded-full flex-shrink-0 bg-blue-600" />
                                 {b}
                             </li>
                         ))}
                     </ul>
 
                     {/* CTA row */}
-                    <div className="flex items-center gap-1 text-xs font-mono mt-2 transition-colors duration-200"
-                        style={{ color: hovered ? service.accent : "#52525b" }}>
+                    <div className="flex items-center gap-1 text-xs font-mono mt-2 transition-colors duration-200 text-gray-500 group-hover:text-blue-600">
                         <span>Learn more</span>
                         <ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-1" />
                     </div>

@@ -62,7 +62,7 @@ export default function ContactForm() {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <div className="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4" aria-label="Contact form" noValidate>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <FloatingField label="Your Name"  name="name"  value={formData.name}  onChange={handleChange} required />
@@ -79,8 +79,8 @@ export default function ContactForm() {
             disabled={isSubmitting || submitted}
             className={`mt-1 w-full py-3.5 px-6 rounded-xl font-semibold text-sm text-white flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed ${
               !isSubmitting && !submitted
-                ? "btn-shimmer shadow-lg shadow-orange-500/20 hover:shadow-orange-400/30 hover:scale-[1.01]"
-                : "bg-zinc-700"
+                ? "bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30 hover:scale-[1.01]"
+                : "bg-gray-300 text-gray-500"
             }`}
             aria-label="Send Message"
           >
@@ -96,7 +96,7 @@ export default function ContactForm() {
 
         <ContactToasts submitted={submitted} error={error} />
 
-        <p className="mt-4 text-center text-xs text-zinc-700 font-mono">
+        <p className="mt-4 text-center text-xs text-gray-400 font-mono">
           No spam. No cold pitches. Just real conversations.
         </p>
       </div>

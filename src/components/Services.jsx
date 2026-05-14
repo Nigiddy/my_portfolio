@@ -24,7 +24,7 @@ const services = [
       "Auth, payments & integrations",
       "CI/CD & cloud deployments",
     ],
-    accent: "#f97316",          // orange
+    accent: "#2563eb",          // blue-600
     size: "large",              // bento sizing
     stat: { value: "3+", label: "SaaS products shipped" },
   },
@@ -39,7 +39,7 @@ const services = [
       "Tailwind CSS & Framer Motion",
       "Core Web Vitals optimised",
     ],
-    accent: "#22d3ee",          // cyan
+    accent: "#93c5fd",
     size: "medium",
     stat: { value: "100ms", label: "avg load target" },
   },
@@ -54,7 +54,7 @@ const services = [
       "M-Pesa STK Push integration",
       "PostgreSQL & Supabase",
     ],
-    accent: "#a78bfa",          // violet
+    accent: "#60a5fa",
     size: "medium",
     stat: { value: "99%", label: "uptime target" },
   },
@@ -69,7 +69,7 @@ const services = [
       "Design systems & tokens",
       "Accessibility (WCAG 2.1)",
     ],
-    accent: "#f472b6",          // pink
+    accent: "#bfdbfe",
     size: "large",
     stat: { value: "4.9★", label: "avg client rating" },
   },
@@ -84,11 +84,8 @@ export default function ServicesPage() {
   return (
     <section
       id="services"
-      className="relative w-full overflow-hidden bg-zinc-950 py-16 sm:py-24"
+      className="relative w-full overflow-hidden bg-white py-16 sm:py-24"
     >
-      {/* Ambient glow */}
-      <div aria-hidden className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] opacity-[0.07]"
-        style={{ background: "radial-gradient(ellipse, #f97316 0%, transparent 70%)" }} />
       <GridOverlay />
 
       <Wrapper className="relative z-10 max-w-5xl">
@@ -129,15 +126,15 @@ export default function ServicesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-5 bg-zinc-900/50 border border-zinc-800 rounded-2xl"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-5 bg-gray-50 border border-gray-200 rounded-2xl"
         >
           <div>
-            <p className="text-white font-semibold text-sm">Have a project in mind?</p>
-            <p className="text-zinc-500 text-xs mt-0.5">Let's talk scope, timeline, and budget. </p>
+            <p className="text-gray-900 font-semibold text-sm">Have a project in mind?</p>
+            <p className="text-gray-500 text-xs mt-0.5">Let's talk scope, timeline, and budget. </p>
           </div>
           <a
             href="#contact"
-            className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-orange-500 hover:bg-orange-400 shadow-lg shadow-orange-500/20 hover:shadow-orange-400/30 transition-all duration-200 hover:scale-[1.02]"
+            className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
           >
             Get a Free Estimate
             <ArrowRight className="w-4 h-4" />

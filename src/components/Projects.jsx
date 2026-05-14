@@ -8,6 +8,8 @@ import {
   SiVite, SiTypescript, SiTailwindcss,
   SiSupabase, SiPostgresql
 } from "react-icons/si";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 import ProjectCard from "./project/ProjectCard";
 import DetailPanel from "./project/DetailPanel";
@@ -111,8 +113,23 @@ const projects = [
 export default function Projects() {
   const [active, setActive] = useState(null);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+
   return (
-    <section id="projects" className="relative w-full py-20 bg-zinc-950 transition-colors overflow-hidden">
+    <section id="projects" className="relative w-full py-20 bg-white transition-colors overflow-hidden">
       <GridOverlay />
 
       <Wrapper className="max-w-5xl">
@@ -124,48 +141,38 @@ export default function Projects() {
         />
 
         {/* Bento grid */}
-        <div
-          className="grid gap-4"
-          style={{
-            gridTemplateColumns: "repeat(6, 1fr)",
-            gridTemplateRows: "auto",
-          }}
+        <motion.div
+          className="grid gap-4 grid-cols-6 auto-rows-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           {/* Featured card — spans 4 cols on md+ */}
-          <div
-            className="col-span-6 md:col-span-4 animate-cardReveal"
-            style={{ animationDelay: "0.1s" }}
-          >
+          <motion.div className="col-span-6 md:col-span-4" variants={itemVariants}>
             <ProjectCard project={projects[0]} onClick={() => setActive(projects[0])} />
-          </div>
+          </motion.div>
 
           {/* Medium card — spans 2 cols */}
-          <div
-            className="col-span-6 md:col-span-2 animate-cardReveal"
-            style={{ animationDelay: "0.2s" }}
-          >
+          <motion.div className="col-span-6 md:col-span-2" variants={itemVariants}>
             <ProjectCard project={projects[1]} onClick={() => setActive(projects[1])} />
-          </div>
+          </motion.div>
 
           {/* Small card — spans 3 cols on md+ */}
-          <div
-            className="col-span-6 md:col-span-3 animate-cardReveal"
-            style={{ animationDelay: "0.3s" }}
-          >
+          <motion.div className="col-span-6 md:col-span-3" variants={itemVariants}>
             <ProjectCard project={projects[2]} onClick={() => setActive(projects[2])} />
-          </div>
+          </motion.div>
 
-          {/* "More coming" teaser — spans 3 cols */}
-          <div
-            className="col-span-6 md:col-span-3 animate-cardReveal"
-            style={{ animationDelay: "0.4s" }}
-          >
-            <div className="h-full min-h-[140px] rounded-2xl border border-dashed border-zinc-700/50 flex flex-col items-center justify-center gap-2 text-zinc-600 hover:text-zinc-400 hover:border-zinc-600 transition-colors cursor-default select-none">
-              <span className="text-3xl">✦</span>
-              <span className="text-sm font-medium">More coming soon</span>
-            </div>
-          </div>
-        </div>
+          {/* "More projects" teaser — spans 3 cols */}
+          <motion.div className="col-span-6 md:col-span-3" variants={itemVariants}>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="group h-full min-h-[140px] rounded-2xl border border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-500 hover:text-gray-900 hover:border-gray-400 transition-colors cursor-pointer select-none">
+              <span className="text-sm font-medium flex items-center gap-2">
+                View all work on GitHub
+                <ArrowRight className="w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              </span>
+            </a>
+          </motion.div>
+        </motion.div>
       </Wrapper>
 
       {/* Detail panel */}

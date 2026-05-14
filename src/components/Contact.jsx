@@ -8,8 +8,7 @@ import ContactForm from "./contact/ContactForm";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative w-full py-24 bg-zinc-950 overflow-hidden">
-      <SectionGlows />
+    <section id="contact" className="relative w-full py-24 bg-white overflow-hidden">
       <GridOverlay />
 
       <Wrapper className="relative z-10 max-w-5xl">

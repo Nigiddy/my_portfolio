@@ -3,12 +3,11 @@ export default function Card({ children, className, ...props }) {
     <div
       className={`
         group relative flex flex-col h-full cursor-pointer
-        bg-zinc-900/80 backdrop-blur-sm
+        bg-white
         rounded-2xl overflow-hidden
-        border border-zinc-800/60 hover:border-zinc-600/80
+        border border-gray-200 hover:border-gray-300
         transition-all duration-500
-        shadow-lg hover:shadow-2xl hover:shadow-black/40
-        hover:-translate-y-1
+        shadow-sm hover:shadow-md
         ${className}
       `}
       {...props}

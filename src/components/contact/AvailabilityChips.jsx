@@ -28,25 +28,25 @@ export default function AvailabilityChips() {
 
       {/* Availability chips */}
       <div className="flex flex-col gap-3">
-        <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-[0.2em] mb-1">
+        <p className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.2em] mb-1">
           Availability
         </p>
         {availability.map(({ Icon, text }) => (
           <div
             key={text}
-            className="flex items-center gap-3 px-4 py-3 bg-zinc-900/60 border border-zinc-800 rounded-xl"
+            className="flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm"
           >
-            <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-orange-500/10 flex-shrink-0">
-              <Icon className="text-orange-400 text-xs" />
+            <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-blue-50 flex-shrink-0">
+              <Icon className="text-blue-600 text-xs" />
             </span>
-            <span className="text-sm text-zinc-300">{text}</span>
+            <span className="text-sm text-gray-900">{text}</span>
           </div>
         ))}
       </div>
 
       {/* Decorative quote */}
-      <div className="hidden md:block border-l-2 border-orange-500/30 pl-4">
-        <p className="text-zinc-600 text-sm italic leading-relaxed">
+      <div className="hidden md:block border-l-2 border-blue-200 pl-4">
+        <p className="text-gray-500 text-sm italic leading-relaxed">
           "Great products are built on great communication."
         </p>
       </div>

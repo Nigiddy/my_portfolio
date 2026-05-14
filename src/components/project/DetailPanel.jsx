@@ -29,13 +29,13 @@ export default function DetailPanel({ project, onClose }) {
     <div
       ref={overlayRef}
       onClick={handleOverlayClick}
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-gray-900/50 backdrop-blur-sm p-4"
       style={{ animation: "fadeIn 0.2s ease" }}
     >
       <div
         className="
           relative w-full max-w-2xl max-h-[90vh] overflow-y-auto
-          bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl
+          bg-white border border-gray-200 rounded-2xl shadow-2xl
           flex flex-col
         "
         style={{ animation: "slideUp 0.3s cubic-bezier(0.16,1,0.3,1)" }}
@@ -49,12 +49,12 @@ export default function DetailPanel({ project, onClose }) {
             sizes="(max-width: 768px) 100vw, 672px"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
 
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-700 rounded-full p-2 text-white transition-colors"
+            className="absolute top-4 right-4 bg-white hover:bg-gray-50 border border-gray-200 rounded-full p-2 text-gray-500 transition-colors shadow-sm"
             aria-label="Close panel"
           >
             <FaXmark className="text-sm" />
@@ -62,27 +62,27 @@ export default function DetailPanel({ project, onClose }) {
 
           {/* Title overlay */}
           <div className="absolute bottom-4 left-5 right-14">
-            <p className="text-xs font-mono text-orange-400 uppercase tracking-widest mb-1">{project.tagline}</p>
-            <h2 className="text-2xl font-bold text-white leading-tight">{project.title}</h2>
+            <p className="text-xs font-mono text-blue-600 uppercase tracking-widest mb-1">{project.tagline}</p>
+            <h2 className="text-2xl font-bold text-gray-900 leading-tight">{project.title}</h2>
           </div>
         </div>
 
         {/* Body */}
         <div className="p-5 flex flex-col gap-6">
-          <p className="text-zinc-300 leading-relaxed text-sm">{project.longDescription}</p>
+          <p className="text-gray-600 leading-relaxed text-sm">{project.longDescription}</p>
 
           {/* Proof of Work stats */}
           <div>
-            <h4 className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">Proof of Work</h4>
+            <h4 className="text-xs font-mono text-gray-400 uppercase tracking-widest mb-3">Proof of Work</h4>
             <div className="grid grid-cols-3 gap-3">
               {project.stats.map((stat, i) => (
                 <div
                   key={i}
-                  className="flex flex-col items-center justify-center gap-1 bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-center"
+                  className="flex flex-col items-center justify-center gap-1 bg-gray-50 border border-gray-200 rounded-xl p-3 text-center"
                 >
-                  <stat.icon className="text-orange-400 text-lg" />
-                  <span className="text-white text-xl font-black">{stat.value}</span>
-                  <span className="text-zinc-500 text-xs leading-tight">{stat.label}</span>
+                  <stat.icon className="text-blue-600 text-lg" />
+                  <span className="text-gray-900 text-xl font-black">{stat.value}</span>
+                  <span className="text-gray-500 text-xs leading-tight">{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -90,14 +90,14 @@ export default function DetailPanel({ project, onClose }) {
 
           {/* Tech stack */}
           <div>
-            <h4 className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">Tech Stack</h4>
+            <h4 className="text-xs font-mono text-gray-400 uppercase tracking-widest mb-3">Tech Stack</h4>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map(({ Icon, label }, idx) => (
                 <span
                   key={idx}
-                  className="flex items-center gap-2 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-zinc-300"
+                  className="flex items-center gap-2 bg-blue-50 text-blue-700 rounded-full px-3 py-1 text-sm border border-transparent"
                 >
-                  <Icon className="text-orange-400" />
+                  <Icon className="text-blue-600" />
                   {label}
                 </span>
               ))}
@@ -111,8 +111,8 @@ export default function DetailPanel({ project, onClose }) {
             rel="noopener noreferrer"
             className="
               flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl
-              bg-orange-500 hover:bg-orange-400 text-white font-semibold
-              transition-all duration-200 shadow-lg shadow-orange-500/20 hover:shadow-orange-400/30
+              bg-blue-600 hover:bg-blue-700 text-white font-semibold
+              transition-all duration-200
             "
           >
             {project.isDeployed ? <FaGlobe /> : <FaGithub />}
