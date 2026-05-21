@@ -63,9 +63,12 @@ export default function HeroSection() {
                 <h1 className="text-2xl sm:text-4xl font-bold mt-3">
                   Hey, I'm <span className="text-blue-500">Gideon Papa</span>
                 </h1>
-                <h2 className="text-base sm:text-lg font-medium mt-2">
-                  Full-Stack Developer & UI/UX Designer
-                </h2>
+                <h4 className="text-base sm:text-lg font-medium mt-2">
+                  I build high-performance web products
+                   that solve real business problems 
+                    and modern customer-facing applications.
+                     Based in Kenya, building digital experiences for clients globally.
+                </h4>
                 </motion.div>
           <motion.div
             className="flex justify-center"
