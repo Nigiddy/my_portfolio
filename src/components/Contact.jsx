@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import emailjs from "@emailjs/browser";  // ⬅️ Import EmailJS
+import { Send, User, Mail, MessageSquare } from "lucide-react";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import contactAnimation from "../animations/contact.json";
@@ -70,58 +71,71 @@ export default function ContactSection() {
           <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">
             Get in Touch
           </h2>
+          <p className="text-center text-gray-600 dark:text-gray-400 mb-8 text-sm">
+            Have a project in mind?
+          </p>
 
           <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
-            <input 
-              type="text" 
-              name="name" 
-              placeholder="Your Name" 
-              value={formData.name} 
-              onChange={handleChange} 
-              className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required 
-              aria-label="Your Name"
-            />
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Your Email" 
-              value={formData.email} 
-              onChange={handleChange} 
-              className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required 
-              aria-label="Your Email"
-            />
-            <textarea 
-              name="message" 
-              placeholder="Your Message" 
-              value={formData.message} 
-              onChange={handleChange} 
-              rows="4" 
-              className="w-full p-3 rounded-lg border dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-              aria-label="Your Message"
-            ></textarea>
+            <div className="relative">
+              <User className="absolute left-3 top-3.5 text-gray-400 dark:text-gray-500 w-5 h-5" />
+              <input 
+                type="text" 
+                name="name" 
+                placeholder="Your Name" 
+                value={formData.name} 
+                onChange={handleChange} 
+                className="w-full pl-10 p-3 rounded-lg border bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
+                required 
+                aria-label="Your Name"
+              />
+            </div>
+            <div className="relative">
+              <Mail className="absolute left-3 top-3.5 text-gray-400 dark:text-gray-500 w-5 h-5" />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Your Email" 
+                value={formData.email} 
+                onChange={handleChange} 
+                className="w-full pl-10 p-3 rounded-lg border bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
+                required 
+                aria-label="Your Email"
+              />
+            </div>
+            <div className="relative">
+              <MessageSquare className="absolute left-3 top-3.5 text-gray-400 dark:text-gray-500 w-5 h-5" />
+              <textarea 
+                name="message" 
+                placeholder="Your Message" 
+                value={formData.message} 
+                onChange={handleChange} 
+                rows="4" 
+                className="w-full pl-10 p-3 rounded-lg border bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow resize-y"
+                required
+                aria-label="Your Message"
+              ></textarea>
+            </div>
             <button 
               type="submit" 
-              className={`w-full p-3 rounded-lg text-white transition ${
+              className={`w-full p-3 flex justify-center items-center gap-2 rounded-lg text-white transition-all duration-300 ${
                 isSubmitting ? "bg-blue-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
               }`}
               disabled={isSubmitting}
               aria-label="Send Message"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
+              {!isSubmitting && <Send className="w-4 h-4" />}
             </button>
           </form>
           {submitted && (
-            <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-center" role="status" aria-live="polite">
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-4 p-3 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 rounded-lg text-center" role="status" aria-live="polite">
               Message sent successfully!
-            </div>
+            </motion.div>
           )}
           {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-center" role="alert" aria-live="assertive">
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-4 p-3 bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 rounded-lg text-center" role="alert" aria-live="assertive">
               Failed to send message. Please try again.
-            </div>
+            </motion.div>
           )}
         </motion.div>
       </div>
