@@ -13,7 +13,7 @@ const projects = [
     description: "A modern BBQ restaurant management system with M-Pesa STK Push payment integration.",
     techStack: [FaReact, SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql],
     image: "/images/mlami.jpg",
-    repoLink: "https://demo-mlami.vercel.app/",
+    repoLink: "https://mlami-demo.vercel.app/",
     isDeployed: true
   },
   {
@@ -22,14 +22,6 @@ const projects = [
     techStack: [FaJs, FaNodeJs, FaReact, FaDatabase],
     image: "/images/mpesa-wifi.jpg",
     repoLink: "https://qonnectkibaruani.vercel.app/",
-    isDeployed: true
-  },
-  {
-    title: "Mlami BBQ - Modern Restaurant Website",
-    description: "A modern BBQ restaurant management system with M-Pesa STK Push payment integration.",
-    techStack: [FaReact, SiVite, SiTypescript, SiTailwindcss, SiSupabase, SiPostgresql],
-    image: "/images/mlami.jpg",
-    repoLink: "https://mlamibbq.vercel.app/",
     isDeployed: true
   },
 ];
