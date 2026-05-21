@@ -31,7 +31,7 @@ export default function Footer() {
                target="_blank"
                rel="noopener noreferrer"
                className="hover:text-gray-900 transition-colors" aria-label="Twitter"><Twitter className="w-[18px] h-[18px]" /></a>
-              <a href="mailto:gideonpapa9@gmail.com" className="hover:text-gray-900 transition-colors" aria-label="Email"><Mail className="w-[18px] h-[18px]" /></a>
+              <a href="mailto:hello@example.com" className="hover:text-gray-900 transition-colors" aria-label="Email"><Mail className="w-[18px] h-[18px]" /></a>
             </div>
           </div>
 
