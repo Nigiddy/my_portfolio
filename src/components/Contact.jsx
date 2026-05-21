@@ -47,7 +47,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative w-full py-16 px-6 sm:px-12 bg-white dark:bg-black transition-colors">
+    <section id="contact" className="relative w-full py-16 px-6 sm:px-12 bg-white dark:bg-black transition-colors">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* Animation */}

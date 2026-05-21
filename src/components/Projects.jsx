@@ -47,7 +47,7 @@ export default function Projects() {
   const project = projects[current];
 
   return (
-    <section className="w-full py-16 bg-white dark:bg-black transition-colors">
+    <section id="projects" className="w-full py-16 bg-white dark:bg-black transition-colors">
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white">
           Projects

@@ -31,7 +31,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white dark:bg-black text-black dark:text-white transition-colors duration-500 py-20">
+    <section id="services" className="w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white dark:bg-black text-black dark:text-white transition-colors duration-500 py-20">
       {/* Heading */}
       <motion.div
         className="text-center max-w-3xl"

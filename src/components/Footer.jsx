@@ -1,5 +1,6 @@
-
+import Link from 'next/link';
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -39,9 +40,9 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
 
             <nav className="flex flex-col gap-2">
-              <a href="/projects" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Work</a>
-              <a href="/Services" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Services</a>
-              <a href="/Contact" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Contact</a>
+              <Link href="#projects" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Work</Link>
+              <Link href="#services" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Services</Link>
+              <Link href="#contact" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Contact</Link>
             </nav>
           </div>
 
