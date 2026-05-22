@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { FaExternalLinkAlt, FaGithub, FaNodeJs, FaReact, FaJs, FaServer } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaNodeJs, FaReact, FaJs, FaDatabase } from "react-icons/fa";
 import { SiPostgresql, SiTypescript, SiTailwindcss, SiSupabase } from "react-icons/si";
 import { HiCheckCircle } from "react-icons/hi2";
 
@@ -29,8 +29,8 @@ const projects = [
     techStack: [
       { name: "Node.js", Icon: FaNodeJs },
       { name: "React", Icon: FaReact },
-      { name: "PostgreSQL", Icon: SiPostgresql },
-      { name: "JavaScript", Icon: FaJs }
+      { name: "JavaScript", Icon: FaJs },
+      { name: "MySQL", Icon: FaDatabase },
     ],
     primaryCta: { label: "View Live Demo", href: "https://qonnectkibaruani.vercel.app/" },
   },
