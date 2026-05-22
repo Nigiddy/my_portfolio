@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaNodeJs, FaReact, FaJs, FaServer } from "react-icons/fa";
+import { SiPostgresql, SiTypescript, SiTailwindcss, SiSupabase } from "react-icons/si";
 import { HiCheckCircle } from "react-icons/hi2";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -25,7 +26,12 @@ const projects = [
       "User Management",
       "Real-Time Payment Updates",
     ],
-    techStack: ["Node.js", "React", "PostgreSQL", "Daraja API", "MikroTik API"],
+    techStack: [
+      { name: "Node.js", Icon: FaNodeJs },
+      { name: "React", Icon: FaReact },
+      { name: "PostgreSQL", Icon: SiPostgresql },
+      { name: "JavaScript", Icon: FaJs }
+    ],
     primaryCta: { label: "View Live Demo", href: "https://qonnectkibaruani.vercel.app/" },
   },
   {
@@ -45,7 +51,13 @@ const projects = [
       "Reservation & Booking System",
       "Digital Receipts",
     ],
-    techStack: ["React", "TypeScript", "TailwindCSS", "Supabase", "PostgreSQL"],
+    techStack: [
+      { name: "React", Icon: FaReact },
+      { name: "TypeScript", Icon: SiTypescript },
+      { name: "TailwindCSS", Icon: SiTailwindcss },
+      { name: "Supabase", Icon: SiSupabase },
+      { name: "PostgreSQL", Icon: SiPostgresql },
+    ],
     primaryCta: { label: "View Live Demo", href: "https://mlami-demo.vercel.app/" },
   },
 ];
@@ -59,9 +71,13 @@ const StatusBadge = ({ label, color }) => (
   </span>
 );
 
-const TechBadge = ({ label }) => (
-  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-50/60 dark:bg-blue-900/20 text-blue-500 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/40">
-    {label}
+const TechBadge = ({ label, Icon }) => (
+  <span 
+    aria-label={label}
+    title={label}
+    className="p-2 text-lg flex items-center justify-center rounded-full bg-blue-50/60 dark:bg-blue-900/20 text-blue-500 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/40 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-200 transition-all duration-200 cursor-help"
+  >
+    <Icon />
   </span>
 );
 
@@ -74,7 +90,7 @@ const CTAButton = ({
     rel="noopener noreferrer"
     className={`inline-flex items-center gap-2.5 px-7 py-3 rounded-xl text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${
       variant === "primary"
-        ? "bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+        ? "bg-blue-500 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
         : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-2 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
     }`}
   >
@@ -133,7 +149,9 @@ const ProjectCard = ({ project, reverse }) => (
 
       {/* Tech */}
       <div className="flex flex-wrap gap-2">
-        {project.techStack.map((t) => <TechBadge key={t} label={t} />)}
+        {project.techStack.map((t) => (
+          <TechBadge key={t.name} label={t.name} Icon={t.Icon} />
+        ))}
       </div>
 
       {/* CTAs */}
