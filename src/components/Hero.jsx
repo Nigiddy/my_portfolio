@@ -17,6 +17,8 @@ import {
   FaPython,
   FaAws,
   FaDatabase,
+  FaArrowRight,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
 import { SiX } from 'react-icons/si';
 
@@ -26,6 +28,21 @@ import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 import laptopAnimation from "../animations/laptop.json";
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
+const word = {
+  hidden: { opacity: 0, y: 8 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } }
+};
 
 export default function HeroSection() {
   const { theme, setTheme } = useTheme(); // 🧩 Global theme
@@ -51,24 +68,57 @@ export default function HeroSection() {
       >
         <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
-                <motion.div
-                className="text-left"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+          <motion.div
+            className="text-left"
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={item}>
+              <h4 className="text-sm uppercase tracking-widest text-gray-500">
+                Welcome to My Portfolio
+              </h4>
+            </motion.div>
+            <motion.div variants={item}>
+              <h1 className="text-2xl sm:text-4xl font-bold mt-3">
+                Hey, I'm <span className="text-blue-500">Gideon Papa</span>
+              </h1>
+            </motion.div>
+            <motion.div variants={item}>
+              <motion.h4
+                className="text-base sm:text-lg font-medium mt-2"
+                variants={container}
+                initial="hidden"
+                animate="show"
+              >
+                {"I build high-performance web products solving real business problems. Bringing ideas to life with code, creativity, and a touch of magic."
+                  .split(" ")
+                  .map((w, i) => (
+                    <motion.span key={i} variants={word} style={{ display: "inline-block", marginRight: "0.25em" }}>
+                      {w}
+                    </motion.span>
+                  ))}
+              </motion.h4>
+            </motion.div>
+            <motion.div variants={item}>
+              <div className="flex flex-wrap gap-3 mt-6">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-md shadow-blue-600/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 >
-                <h4 className="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                  Welcome to My Portfolio
-                </h4>
-                <h1 className="text-2xl sm:text-4xl font-bold mt-3">
-                  Hey, I'm <span className="text-blue-500">Gideon Papa</span>
-                </h1>
-                <h4 className="text-base sm:text-lg font-medium mt-2">
-                  I build high-performance web products
-                  solving, real business problems.     
-                  Bringing ideas to life with code, creativity, and a touch of magic.
-                </h4>
-                </motion.div>
+                  Let's work together
+                  <FaArrowRight className="text-xs" />
+                </a>
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  View projects
+                  <FaExternalLinkAlt className="text-xs" />
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
           <motion.div
             className="flex justify-center"
             initial={{ opacity: 0, x: 50 }}
@@ -205,6 +255,3 @@ export default function HeroSection() {
     </>
   );
 }
-
-
-
