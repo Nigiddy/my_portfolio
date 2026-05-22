@@ -14,7 +14,7 @@ const projects = [
     title: "WiFi Billing System",
     category: "Fintech · Hotspot Automation",
     subtitle:
-      "Automated hotspot billing platform — customers pay via M-Pesa STK Push and get internet access instantly. Zero manual intervention.",
+      "Automated hotspot billing platform — customers pay via M-Pesa STK Push and get internet access instantly.",
     status: "Live",
     statusColor: "bg-emerald-500",
     image: "/images/mpesa-wifi.jpg",
@@ -39,7 +39,7 @@ const projects = [
     title: "Mlami BBQ",
     category: "F&B · Restaurant Tech",
     subtitle:
-      "Full-stack restaurant platform replacing paper menus — customers scan a QR code, order, and pay via M-Pesa from their table.",
+      "Full-stack restaurant platform — customers scan a QR code for Menu, order, and pay via M-Pesa STK Push and receive a digital receipt. Admins manage menu, orders, and reservations in real-time.",
     status: "Live",
     statusColor: "bg-blue-500",
     image: "/images/mlami.jpg",

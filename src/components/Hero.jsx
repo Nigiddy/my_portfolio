@@ -64,7 +64,7 @@ export default function HeroSection() {
       {/* Hero Section */}
       <section
         id="home"
-        className={`relative w-full h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white text-black dark:bg-black dark:text-white`} // 🔥 Tailwind handles theme
+        className={`relative w-full h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white text-black dark:bg-black dark:text-white`} //  Tailwind handles theme
       >
         <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
