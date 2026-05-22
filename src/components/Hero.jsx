@@ -65,9 +65,8 @@ export default function HeroSection() {
                 </h1>
                 <h4 className="text-base sm:text-lg font-medium mt-2">
                   I build high-performance web products
-                   that solve real business problems 
-                    and modern customer-facing applications.
-                     Based in Kenya, building digital experiences for clients globally.
+                  solving, real business problems.     
+                  Bringing ideas to life with code, creativity, and a touch of magic.
                 </h4>
                 </motion.div>
           <motion.div
