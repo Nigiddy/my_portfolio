@@ -188,7 +188,7 @@ export default function Projects() {
         {/* Header */}
         <div className="text-center mb-12 lg:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-            My <span className="text-blue-500 dark:text-blue-500">Projects</span>
+            My Projects
           </h2>
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             Production-ready applications built to solve real business problems.
