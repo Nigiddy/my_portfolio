@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
-
+import { DiscordIcon } from "./components/ui/discord";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -27,6 +27,10 @@ export default function Footer() {
                rel="noopener noreferrer"
                className="hover:text-gray-900 transition-colors" aria-label="LinkedIn"><Linkedin className="w-[18px] h-[18px]" /></a>
 
+              <a href="https://discord.com/users/1282628561320284283"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="hover:text-gray-900 transition-colors" aria-label="Discord"><DiscordIcon className="w-[18px] h-[18px]" /></a>
 
               <a href="https://twitter.com/niGiddy"
                target="_blank"
