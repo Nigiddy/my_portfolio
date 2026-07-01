@@ -15,8 +15,6 @@ const projects = [
     category: "Fintech · Hotspot Automation",
     subtitle:
       "Automated hotspot billing platform — customers pay via M-Pesa STK Push and get internet access instantly.",
-    status: "Live",
-    statusColor: "bg-emerald-500",
     image: "/images/mpesa-wifi.jpg",
     features: [
       "MikroTik Integration",
@@ -40,8 +38,6 @@ const projects = [
     category: "F&B · Restaurant Tech",
     subtitle:
       "Full-stack restaurant platform — customers scan a QR code for Menu, order, and pay via M-Pesa STK Push and receive a digital receipt. Admins manage menu, orders, and reservations in real-time.",
-    status: "Live",
-    statusColor: "bg-blue-500",
     image: "/images/mlami.jpg",
     features: [
       "QR Code Ordering",
@@ -64,12 +60,6 @@ const projects = [
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-const StatusBadge = ({ label, color }) => (
-  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest uppercase text-white backdrop-blur-md border border-white/20 shadow-sm ${color}/90`}>
-    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-    {label}
-  </span>
-);
 
 const TechBadge = ({ label, Icon }) => (
   <span 
@@ -110,7 +100,6 @@ const ProjectCard = ({ project, reverse }) => (
       <div className="absolute -inset-1.5 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-3xl blur-xl opacity-15 lg:group-hover:opacity-35 transition duration-700" />
       <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl bg-gray-900">
         <div className="absolute top-3 left-3 z-10">
-          <StatusBadge label={project.status} color={project.statusColor} />
         </div>
         <div className="aspect-video lg:aspect-[4/3] relative">
           <Image
