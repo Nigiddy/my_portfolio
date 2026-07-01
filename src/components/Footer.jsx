@@ -22,7 +22,7 @@ export default function Footer() {
                className="hover:text-gray-900 transition-colors" aria-label="GitHub"><Github className="w-[18px] h-[18px]" /></a>
 
 
-              <a href="https://linkedin.com/in/gideonpapa"
+              <a href="https://linkedin.com/in/gideon-papa-8b121124b"
                target="_blank"
                rel="noopener noreferrer"
                className="hover:text-gray-900 transition-colors" aria-label="LinkedIn"><Linkedin className="w-[18px] h-[18px]" /></a>
