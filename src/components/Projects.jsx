@@ -15,7 +15,7 @@ const projects = [
     category: "Fintech · Hotspot Automation",
     subtitle:
       "Automated hotspot billing platform — customers pay via M-Pesa STK Push and get internet access instantly.",
-    image: "/images/mpesa-wifi.jpg",
+    image: "/images/wifiBilling.webp",
     features: [
       "MikroTik Integration",
       "M-Pesa STK Push",
@@ -38,7 +38,7 @@ const projects = [
     category: "F&B · Restaurant Tech",
     subtitle:
       "Full-stack restaurant platform — customers scan a QR code for Menu, order, and pay via M-Pesa STK Push and receive a digital receipt. Admins manage menu, orders, and reservations in real-time.",
-    image: "/images/mlami.jpg",
+    image: "/images/mlami.webp",
     features: [
       "QR Code Ordering",
       "M-Pesa Checkout",
@@ -62,7 +62,7 @@ const projects = [
   category: "Travel & Mobility · Car Rental",
   subtitle:
     "Modern car rental platform that allows customers to browse the fleet, view detailed vehicle galleries, compare features, and reserve premium vehicles through a seamless, mobile-first experience. Built with a focus on speed, trust, and a premium user experience.",
-  image: "/images/milkia.png",
+  image: "/images/milkia.webp",
   features: [
     "Premium Fleet Showcase",
     "Vehicle Gallery & Specifications",
