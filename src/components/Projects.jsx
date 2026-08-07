@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaExternalLinkAlt, FaGithub, FaNodeJs, FaReact, FaJs, FaDatabase } from "react-icons/fa";
-import { SiPostgresql, SiTypescript, SiTailwindcss, SiSupabase } from "react-icons/si";
+import { SiPostgresql, SiTypescript, SiTailwindcss, SiSupabase, SiVite } from "react-icons/si";
 import { HiCheckCircle } from "react-icons/hi2";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -56,6 +56,30 @@ const projects = [
     ],
     primaryCta: { label: "View Live Demo", href: "https://mlami-demo.vercel.app/" },
   },
+  {
+  id: "milkia",
+  title: "MILKIA Car Rental",
+  category: "Travel & Mobility · Car Rental",
+  subtitle:
+    "Modern car rental platform that allows customers to browse the fleet, view detailed vehicle galleries, compare features, and reserve premium vehicles through a seamless, mobile-first experience. Built with a focus on speed, trust, and a premium user experience.",
+  image: "/images/milkia.png",
+  features: [
+    "Premium Fleet Showcase",
+    "Vehicle Gallery & Specifications",
+    "Responsive Mobile Experience",
+    "Customer Reviews & Testimonials",
+  ],
+  techStack: [
+    { name: "React", Icon: FaReact },
+    { name: "TypeScript", Icon: SiTypescript },
+    { name: "TailwindCSS", Icon: SiTailwindcss },
+    { name: "Vite", Icon: SiVite },
+  ],
+  primaryCta: {
+    label: "View Live Demo",
+    href: "https://milkia-gamma.vercel.app/",
+  },
+},
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
