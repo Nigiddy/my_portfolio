@@ -64,7 +64,7 @@ export default function HeroSection() {
       {/* Hero Section */}
       <section
         id="home"
-        className={`relative w-full h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white text-black dark:bg-black dark:text-white`} //  Tailwind handles theme
+        className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20"
       >
         <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
@@ -75,18 +75,21 @@ export default function HeroSection() {
             animate="show"
           >
             <motion.div variants={item}>
-              <h4 className="text-sm uppercase tracking-widest text-gray-500">
+              <p className="text-overline text-gray-500 dark:text-gray-400">
                 Welcome to My Portfolio
-              </h4>
+              </p>
             </motion.div>
             <motion.div variants={item}>
-              <h1 className="text-2xl sm:text-4xl font-bold mt-3">
+              <h1
+                className="font-heading font-bold mt-3 tracking-tight leading-[1.1]"
+                style={{ fontSize: "clamp(2.25rem, 5.5vw, 4rem)" }}
+              >
                 Hey, I'm <span className="text-blue-500">Gideon Papa</span>
               </h1>
             </motion.div>
             <motion.div variants={item}>
-              <motion.h4
-                className="text-base sm:text-lg font-medium mt-4 text-gray-700 dark:text-gray-300 leading-relaxed"
+              <motion.p
+                className="text-base sm:text-lg font-medium mt-4 text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg"
                 variants={container}
                 initial="hidden"
                 animate="show"
@@ -98,7 +101,7 @@ export default function HeroSection() {
                       {w}
                     </motion.span>
                   ))}
-              </motion.h4>
+              </motion.p>
             </motion.div>
             <motion.div variants={item}>
               <div className="flex flex-wrap gap-3 mt-6">
@@ -136,9 +139,9 @@ export default function HeroSection() {
 
         {/* Tech Stack Section */}
         <div className="mt-12 w-full max-w-4xl">
-          <h3 className="text-2xl font-bold text-center mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-center mb-6 tracking-tight">
             Tech Stack & Expertise
-          </h3>
+          </h2>
           <div className="flex flex-wrap justify-center gap-6">
             <FaJs className="text-yellow-500 text-4xl hover:scale-110 transition-transform duration-300" />
             <FaNodeJs className="text-green-600 text-4xl hover:scale-110 transition-transform duration-300" />
@@ -230,28 +233,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Tooltip Styling */}
-      <style jsx>{`
-        .tooltip {
-          position: absolute;
-          bottom: 150%;
-          left: 50%;
-          transform: translateX(-50%);
-          background-color: #000000cc;
-          color: white;
-          padding: 4px 8px;
-          border-radius: 4px;
-          font-size: 0.75rem;
-          white-space: nowrap;
-          opacity: 0;
-          pointer-events: none;
-          transition: opacity 0.3s;
-        }
-
-        .group:hover .tooltip {
-          opacity: 1;
-        }
-      `}</style>
     </>
   );
 }

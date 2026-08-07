@@ -12,31 +12,31 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
             <div>
-              <p className="text-gray-900 font-bold font-mono text-lg">Gideon Papa</p>
+              <p className="text-gray-900 dark:text-white font-bold font-mono text-lg">Gideon Papa</p>
               <p className="text-sm text-gray-500 mt-1">Bringing Ideas to reality.</p>
             </div>
             <div className="flex items-center gap-4 text-gray-400">
               <a href="https://github.com/Nigiddy"
                target="_blank"
                rel="noopener noreferrer"
-               className="hover:text-gray-900 transition-colors" aria-label="GitHub"><Github className="w-[18px] h-[18px]" /></a>
+               className="hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="GitHub"><Github className="w-[18px] h-[18px]" /></a>
 
 
               <a href="https://linkedin.com/in/gideon-papa-8b121124b"
                target="_blank"
                rel="noopener noreferrer"
-               className="hover:text-gray-900 transition-colors" aria-label="LinkedIn"><Linkedin className="w-[18px] h-[18px]" /></a>
+               className="hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><Linkedin className="w-[18px] h-[18px]" /></a>
 
               <a href="https://discord.com/users/1282628561320284283"
                target="_blank"
                rel="noopener noreferrer"
-               className="hover:text-gray-900 transition-colors" aria-label="Discord"><DiscordIcon className="w-[18px] h-[18px]" /></a>
+               className="hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Discord"><DiscordIcon className="w-[18px] h-[18px]" /></a>
 
               <a href="https://twitter.com/niGiddy"
                target="_blank"
                rel="noopener noreferrer"
-               className="hover:text-gray-900 transition-colors" aria-label="Twitter"><Twitter className="w-[18px] h-[18px]" /></a>
-              <a href="mailto:gideonpapa9@gmail.com" className="hover:text-gray-900 transition-colors" aria-label="Email"><Mail className="w-[18px] h-[18px]" /></a>
+               className="hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Twitter"><Twitter className="w-[18px] h-[18px]" /></a>
+              <a href="mailto:gideonpapa9@gmail.com" className="hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Email"><Mail className="w-[18px] h-[18px]" /></a>
             </div>
           </div>
 
@@ -44,9 +44,9 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
 
             <nav className="flex flex-col gap-2">
-              <Link href="#projects" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Work</Link>
-              <Link href="#services" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Services</Link>
-              <Link href="#contact" className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">Contact</Link>
+              <Link href="#projects" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors w-fit">Work</Link>
+              <Link href="#services" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors w-fit">Services</Link>
+              <Link href="#contact" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors w-fit">Contact</Link>
             </nav>
           </div>
 

@@ -141,10 +141,10 @@ const ProjectCard = ({ project, reverse }) => (
     {/* Content */}
     <div className="w-full lg:w-1/2 flex flex-col gap-5 lg:gap-6">
       <div>
-        <p className="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-blue-500 dark:text-blue-400 mb-2">
+        <p className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-blue-500 dark:text-blue-400 mb-2">
           {project.category}
         </p>
-        <h3 className="text-2xl sm:text-3xl md:text-[2.15rem] font-extrabold text-gray-900 dark:text-white leading-tight tracking-tight">
+        <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight">
           {project.title}
         </h3>
         <p className="mt-2.5 sm:mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -200,7 +200,7 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900 dark:text-white">
             My Projects
           </h2>
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">

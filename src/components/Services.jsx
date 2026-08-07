@@ -31,7 +31,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <section id="services" className="w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 bg-white dark:bg-black text-black dark:text-white transition-colors duration-500 py-20">
+    <section id="services" className="w-full min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 transition-colors duration-500 py-20">
       {/* Heading */}
       <motion.div
         className="text-center max-w-3xl"
@@ -40,7 +40,7 @@ export default function ServicesPage() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl sm:text-5xl font-bold">My Services</h2>
+        <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">My Services</h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 mt-4">
           Offering a range of development and design services to bring your ideas to life.
         </p>
@@ -61,7 +61,7 @@ export default function ServicesPage() {
             aria-label={`Service: ${service.title}. ${service.description}`}
           >
             <service.Icon className={`text-5xl ${service.color}`} />
-            <h3 className="text-xl font-semibold mt-4 text-center">{service.title}</h3>
+            <h3 className="text-xl font-semibold mt-4 text-center leading-snug">{service.title}</h3>
             <p className="text-gray-600 dark:text-gray-400 mt-2 text-center text-sm">
               {service.description}
             </p>

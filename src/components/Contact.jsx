@@ -48,7 +48,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative w-full py-16 px-6 sm:px-12 bg-white dark:bg-black transition-colors">
+    <section id="contact" className="relative w-full py-16 px-6 sm:px-12 transition-colors">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* Animation */}
@@ -68,10 +68,10 @@ export default function ContactSection() {
           transition={{ duration: 0.8 }}
           className="w-full bg-gray-100 dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-md"
         >
-          <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-3 text-center tracking-tight leading-tight text-gray-900 dark:text-white">
             Get in Touch
           </h2>
-          <p className="text-center text-gray-600 dark:text-gray-400 mb-8 text-sm">
+          <p className="text-center text-gray-500 dark:text-gray-400 mb-8 text-base max-w-sm mx-auto leading-relaxed">
             Have a project in mind?
           </p>
 

@@ -1,7 +1,6 @@
 import "./globals.css";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react"
-// ...existing code...
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,26 +12,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+});
+
 export const metadata = {
   title: "Gideon Papa",
-  description: "A showcase of my work and skills.",
+  description:
+    "Gideon Papa — Full-Stack Developer in Nairobi, Kenya. I build high-performance web apps, fintech solutions & REST APIs. Open to new opportunities.",
   icons: {
-    icon: "/favicon.ico", // Default favicon
-    shortcut: "/favicon-32x32.png", // Shortcut icon
-    apple: "/apple-touch-icon.png", // iOS icon
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
   },
-  manifest: "/site.webmanifest", // Web manifest file
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }) {
-// ...existing code...
-
   return (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="A showcase of my work and skills." />
+        <meta name="description" content="Gideon Papa — Full-Stack Developer in Nairobi, Kenya. I build high-performance web apps, fintech solutions & REST APIs. Open to new opportunities." />
         <meta property="og:title" content="Gideon Papa Portfolio" />
         <meta property="og:description" content="A showcase of my work and skills." />
         <meta property="og:type" content="website" />
@@ -52,7 +56,7 @@ export default function RootLayout({ children }) {
         <title>Gideon Papa</title>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white text-black dark:bg-black dark:text-white transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} min-h-screen bg-white text-black dark:bg-black dark:text-white transition-colors duration-300`}
       >
   {children}
   {/* Client component to update theme color dynamically */}

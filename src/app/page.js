@@ -6,7 +6,7 @@ import Projects from "../components/Projects";
 
 export default function Home() {
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+    <div className="transition-colors duration-300">
       <Hero />
       <Services />
       <Projects />
